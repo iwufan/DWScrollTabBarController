@@ -23,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // ！！！！ 这句话不加看不到tabBar上的内容
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)setTypesArray:(NSArray *)typesArray {
@@ -56,7 +59,9 @@
     
     self.scrollTabBar = scrollTabBar;
 }
-
+/**
+ * 将需要展示的列表都加入到scrollView中
+ */
 - (void)setTableViewArray:(NSMutableArray *)tableViewArray{
 
     _tableViewArray = tableViewArray;
@@ -94,15 +99,15 @@
 
 - (void)setupButtonWidth {
 
-    self.scrollTabBar.unifiedWidth = self.isUnifiedWidth;
-    self.scrollTabBar.buttonWidth = self.buttonWidth <= 0 ? 100 : self.buttonWidth;
+    self.scrollTabBar.unifiedWidth  = self.isUnifiedWidth;
+    self.scrollTabBar.buttonWidth   = self.buttonWidth <= 0 ? 100 : self.buttonWidth;
 }
 
 - (void)setupMargins {
 
-    self.scrollTabBar.margin = self.margin;
-    self.scrollTabBar.leftMargin = self.leftMargin;
-    self.scrollTabBar.rightMargin = self.rightMargin;
+    self.scrollTabBar.margin        = self.margin;
+    self.scrollTabBar.leftMargin    = self.leftMargin;
+    self.scrollTabBar.rightMargin   = self.rightMargin;
 }
 
 - (void)setupDefaults {
@@ -129,7 +134,7 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
+    // 当前页数
     self.currentPage = scrollView.contentOffset.x / DW_SCREEN_WIDTH;
     // 如果是同一页，则直接返回
     if (self.previousPage == self.currentPage) {

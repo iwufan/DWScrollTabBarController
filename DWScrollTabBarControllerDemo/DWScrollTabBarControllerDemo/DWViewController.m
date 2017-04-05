@@ -19,16 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationItem.title = @"可滚动选项卡控制器";
     
-    self.navigationItem.title = @"可滚动选项卡";
     // 颜色
     self.normalColor    = [UIColor blackColor];     // 按钮标题字体颜色 - 未选中，默认黑色
     self.currentColor   = [UIColor whiteColor];     // 按钮标题字体颜色 - 选中，默认橙色
     self.normalBgColor  = [UIColor blueColor];      // 按钮背景颜色   - 未选中，默认白色
     self.currentBgColor = [UIColor purpleColor];    // 按钮背景颜色   - 选中，默认白色
-    self.tabBarBgColor  = [UIColor orangeColor];    // tabBar的背景颜色，
-    self.tabBarHeight   = 30;                       // tabBar的高度，同按钮的高度一样
+    self.tabBarBgColor  = [UIColor orangeColor];    // tabBar的背景颜色(默认白色)
+    // 高度
+    self.tabBarHeight   = 30;                       // tabBar高度（同按钮的高度一样，默认40）
     // 按钮宽度
     self.unifiedWidth   = YES;                      // 是否所有按钮的宽度都相等，如果此值为YES，需要设置按钮宽度，默认100
     self.buttonWidth    = 70;                       // 按钮宽度，如果未设置unifiedWidth为YES，则设置了也不起作用
@@ -45,8 +45,12 @@
     // 其他
     self.bounces        = YES;                      // tabBar是否有弹簧效果，默认无
     
-    self.typesArray = @[@"军事", @"游戏", @"新闻", @"体育", @"娱乐", @"头条", @"军事", @"游戏", @"新闻"];
-    
+    /**
+      !!!！! 注意，一定要设置完所有tabBar的所有属性之后再调用这个方法，否则设置的属性将不会起作用
+      设置tabBar上的按钮（这些数据可以从前台写死，如果数据是动态的，可以从服务器获取，每次的显示的条目数量无所谓）
+     */
+    self.typesArray = @[@"军事", @"游戏", @"社会", @"体育", @"娱乐", @"头条", @"女性", @"政治", @"时尚"];
+    // 添加所有需要展示的列表
     self.tableViewArray = [self setupSubViews];
     // 加载数据，默认加载第一个列表的数据
     [self loadDataWithID:0];
@@ -71,13 +75,14 @@
     return typeTableViews;
 }
 /**
- * 设置每个列表的数据
+ * 设置每个列表的数据（所有类别的列表共用一个dataArray）
  */
 - (void)setDataArray:(NSMutableArray *)dataArray {
     
     _dataArray = dataArray;
     
     UITableView *tableView = self.tableViewArray[self.currentPage];
+    
     [tableView reloadData];
 }
 
@@ -113,7 +118,7 @@
  */
 - (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
     [super tabBar:tabBar didClickTabButton:tabBarButton];
-   
+    // 加载某一类的数据
     [self loadDataWithID:tabBarButton.tag];
 }
 /**
@@ -121,20 +126,25 @@
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [super scrollViewDidEndDecelerating:scrollView];
-    
+    // 加载某一类的数据
     [self loadDataWithID:self.currentPage];
 }
 
 #pragma mark - 加载数据
 - (void)loadDataWithID:(NSInteger)typeID {
 
+    // 清空，防止重复添加数据
+    if (self.dataArray.count != 0) {
+        [self.dataArray removeAllObjects];
+    }
+    // 加载数据（从服务器请求数据）
     NSMutableArray *tempArray = [NSMutableArray array];
     
     for (int i = 0; i < 20; i++) {
         NSString *title = self.typesArray[typeID];
         [tempArray addObject:[NSString stringWithFormat:@"%@ - %d", title, i]];
     }
-    
+    // 得到某一类的数据
     self.dataArray = tempArray;
 }
 

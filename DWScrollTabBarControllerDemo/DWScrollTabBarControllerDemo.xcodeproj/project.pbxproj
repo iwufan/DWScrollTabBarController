@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		E48344961E952A0C00352466 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344951E952A0C00352466 /* main.m */; };
 		E48344991E952A0C00352466 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344981E952A0C00352466 /* AppDelegate.m */; };
-		E483449C1E952A0C00352466 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E483449B1E952A0C00352466 /* ViewController.m */; };
-		E483449F1E952A0C00352466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E483449D1E952A0C00352466 /* Main.storyboard */; };
 		E48344A11E952A0C00352466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48344A01E952A0C00352466 /* Assets.xcassets */; };
 		E48344A41E952A0C00352466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48344A21E952A0C00352466 /* LaunchScreen.storyboard */; };
+		E48344B01E952C8C00352466 /* DWScrollTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344AD1E952C8C00352466 /* DWScrollTabBar.m */; };
+		E48344B11E952C8C00352466 /* DWScrollTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344AF1E952C8C00352466 /* DWScrollTabBarViewController.m */; };
+		E48344B41E952CAB00352466 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344B31E952CAB00352466 /* DWViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +21,15 @@
 		E48344951E952A0C00352466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E48344971E952A0C00352466 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E48344981E952A0C00352466 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E483449A1E952A0C00352466 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E483449B1E952A0C00352466 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E483449E1E952A0C00352466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E48344A01E952A0C00352466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E48344A31E952A0C00352466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E48344A51E952A0C00352466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E48344AC1E952C8C00352466 /* DWScrollTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollTabBar.h; sourceTree = "<group>"; };
+		E48344AD1E952C8C00352466 /* DWScrollTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollTabBar.m; sourceTree = "<group>"; };
+		E48344AE1E952C8C00352466 /* DWScrollTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWScrollTabBarViewController.h; sourceTree = "<group>"; };
+		E48344AF1E952C8C00352466 /* DWScrollTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollTabBarViewController.m; sourceTree = "<group>"; };
+		E48344B21E952CAB00352466 /* DWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWViewController.h; sourceTree = "<group>"; };
+		E48344B31E952CAB00352466 /* DWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,11 @@
 		E48344931E952A0C00352466 /* DWScrollTabBarControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E48344AB1E952C7600352466 /* DWScrollTabBarController */,
 				E48344971E952A0C00352466 /* AppDelegate.h */,
 				E48344981E952A0C00352466 /* AppDelegate.m */,
-				E483449A1E952A0C00352466 /* ViewController.h */,
-				E483449B1E952A0C00352466 /* ViewController.m */,
-				E483449D1E952A0C00352466 /* Main.storyboard */,
+				E48344B21E952CAB00352466 /* DWViewController.h */,
+				E48344B31E952CAB00352466 /* DWViewController.m */,
 				E48344A01E952A0C00352466 /* Assets.xcassets */,
 				E48344A21E952A0C00352466 /* LaunchScreen.storyboard */,
 				E48344A51E952A0C00352466 /* Info.plist */,
@@ -77,6 +81,17 @@
 				E48344951E952A0C00352466 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E48344AB1E952C7600352466 /* DWScrollTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E48344AE1E952C8C00352466 /* DWScrollTabBarViewController.h */,
+				E48344AF1E952C8C00352466 /* DWScrollTabBarViewController.m */,
+				E48344AC1E952C8C00352466 /* DWScrollTabBar.h */,
+				E48344AD1E952C8C00352466 /* DWScrollTabBar.m */,
+			);
+			path = DWScrollTabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +154,6 @@
 			files = (
 				E48344A41E952A0C00352466 /* LaunchScreen.storyboard in Resources */,
 				E48344A11E952A0C00352466 /* Assets.xcassets in Resources */,
-				E483449F1E952A0C00352466 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,23 +164,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E483449C1E952A0C00352466 /* ViewController.m in Sources */,
 				E48344991E952A0C00352466 /* AppDelegate.m in Sources */,
 				E48344961E952A0C00352466 /* main.m in Sources */,
+				E48344B11E952C8C00352466 /* DWScrollTabBarViewController.m in Sources */,
+				E48344B41E952CAB00352466 /* DWViewController.m in Sources */,
+				E48344B01E952C8C00352466 /* DWScrollTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E483449D1E952A0C00352466 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E483449E1E952A0C00352466 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E48344A21E952A0C00352466 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

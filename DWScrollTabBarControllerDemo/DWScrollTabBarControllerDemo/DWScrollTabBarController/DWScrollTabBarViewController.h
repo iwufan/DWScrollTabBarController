@@ -21,39 +21,39 @@
 @property (nonatomic, strong) NSMutableArray                        *tableViewArray;
 /**当前页索引*/
 @property (nonatomic, assign) NSInteger                             currentPage;
-/**正常标题颜色*/
+/**按钮标题字体颜色 - 未选中，默认黑色*/
 @property (nonatomic, strong) UIColor                               *normalColor;
-/**当前标题颜色*/
+/**按钮标题字体颜色 - 选中，默认橙色*/
 @property (nonatomic, strong) UIColor                               *currentColor;
-/**正常背景颜色*/
+/**按钮背景颜色 - 未选中，默认白色*/
 @property (nonatomic, strong) UIColor                               *normalBgColor;
-/**当前背景颜色*/
+/**按钮背景颜色 - 选中，默认白色*/
 @property (nonatomic, strong) UIColor                               *currentBgColor;
-/**tabBar背景颜色(默认灰色)*/
+/**tabBar背景颜色(默认白色)*/
 @property (nonatomic, strong) UIColor                               *tabBarBgColor;
-/**指示条颜色*/
+/**tabBar高度（同按钮的高度一样，默认40）*/
+@property (nonatomic, assign) CGFloat                               tabBarHeight;
+/**指示条颜色（默认跟选中时的标题颜色一样）*/
 @property (nonatomic, strong) UIColor                               *lineColor;
-/**按钮间距*/
+/**按钮间距（默认0）*/
 @property (nonatomic, assign) CGFloat                               margin;
-/**左侧间距*/
+/**tabBar中左边第一个按钮距tabBar左侧的距离，默认0*/
 @property (nonatomic, assign) CGFloat                               leftMargin;
-/**右侧间距(默认和左侧间距一样)*/
+/**tabBar中右边最后一个按钮距tabBar右侧的距离，默认跟leftMargin相同*/
 @property (nonatomic, assign) CGFloat                               rightMargin;
 /**指示线高度(默认1)*/
 @property (nonatomic, assign) CGFloat                               lineHeight;
-/**指示线宽度(默认按钮宽度)*/
+/**指示线宽度(默认按钮宽度，如果按钮不是相同宽度的，须谨慎设置，线的宽度不要超过按钮的宽度！)*/
 @property (nonatomic, assign) CGFloat                               lineWidth;
-/**指示线居中(默认)*/
+/**指示线居中(默认不居中)*/
 @property (nonatomic, assign, getter=isLineCenter) BOOL             lineCenter;
 /**是否显示指示线(默认不显示)*/
 @property (nonatomic, assign, getter=isShowLine) BOOL               showLine;
-/**tabBar高度(默认40)*/
-@property (nonatomic, assign) CGFloat                               tabBarHeight;
-/**按钮宽度(默认100)*/
-@property (nonatomic, assign) CGFloat                               buttonWidth;
-/**是否使用统一宽度*/
+/**是否所有按钮的宽度都相等，如果此值为YES，需要设置按钮宽度，如果不设置，默认100*/
 @property (nonatomic, assign, getter=isUnifiedWidth) CGFloat        unifiedWidth;
-/**是否有弹簧效果*/
+/**按钮宽度，如果未设置unifiedWidth为YES，则设置了也不起作用，默认100*/
+@property (nonatomic, assign) CGFloat                               buttonWidth;
+/**是否有弹簧效果（默认无）*/
 @property (nonatomic, assign, getter=isBounces) CGFloat             bounces;
 
 @end
