@@ -42,6 +42,10 @@
     [self setupMargins];
     // 设置默认值
     [self setupDefaults];
+    // 设置指示条
+    [self setupLine];
+    // 设置字体
+    [self setupFonts];
     // 设置内容
     self.scrollTabBar.tabItemArray = typesArray;
 }
@@ -100,7 +104,7 @@
 - (void)setupButtonWidth {
 
     self.scrollTabBar.unifiedWidth  = self.isUnifiedWidth;
-    self.scrollTabBar.buttonWidth   = self.buttonWidth <= 0 ? 100 : self.buttonWidth;
+    self.scrollTabBar.buttonWidth   = self.buttonWidth <= 0 && self.isUnifiedWidth ? 100 : self.buttonWidth;
 }
 
 - (void)setupMargins {
@@ -114,10 +118,20 @@
 
     self.scrollTabBar.bounces       = self.isBounces;
     self.scrollTabBar.tabBarHeight  =  self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
+}
+
+- (void)setupLine {
+
     self.scrollTabBar.lineHeight    = self.lineHeight <= 0 ? 1 : self.lineHeight;
     self.scrollTabBar.lineWidth     = self.lineWidth;
     self.scrollTabBar.lineCenter    = self.isLineCenter;
     self.scrollTabBar.showLine      = self.isShowLine;
+}
+
+- (void)setupFonts {
+
+    self.scrollTabBar.normalFont = self.normalFont == nil ? [UIFont systemFontOfSize:14] : self.normalFont;
+    self.scrollTabBar.currentFont = self.currentFont == nil ? self.scrollTabBar.normalFont : self.currentFont;
 }
 
 #pragma mark - DWScrollTabBarDelegate

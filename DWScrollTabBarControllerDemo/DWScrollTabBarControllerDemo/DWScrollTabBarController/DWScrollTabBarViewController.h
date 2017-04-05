@@ -21,6 +21,10 @@
 @property (nonatomic, strong) NSMutableArray                        *tableViewArray;
 /**当前页索引*/
 @property (nonatomic, assign) NSInteger                             currentPage;
+/**正常字体（默认不加粗14）*/
+@property (nonatomic, assign) UIFont                                *normalFont;
+/**选中字体（默认同正常字体一样）*/
+@property (nonatomic, assign) UIFont                                *currentFont;
 /**按钮标题字体颜色 - 未选中，默认黑色*/
 @property (nonatomic, strong) UIColor                               *normalColor;
 /**按钮标题字体颜色 - 选中，默认橙色*/

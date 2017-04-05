@@ -26,6 +26,10 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSArray                               *tabItemArray;
+/**正常字体*/
+@property (nonatomic, assign) UIFont                                *normalFont;
+/**选中字体*/
+@property (nonatomic, assign) UIFont                                *currentFont;
 /**正常标题颜色*/
 @property (nonatomic, strong) UIColor                               *normalColor;
 /**当前标题颜色*/

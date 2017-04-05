@@ -22,28 +22,31 @@
     self.navigationItem.title = @"可滚动选项卡控制器";
     
     // 颜色
-    self.normalColor    = [UIColor blackColor];     // 按钮标题字体颜色 - 未选中，默认黑色
-    self.currentColor   = [UIColor whiteColor];     // 按钮标题字体颜色 - 选中，默认橙色
-    self.normalBgColor  = [UIColor blueColor];      // 按钮背景颜色   - 未选中，默认白色
-    self.currentBgColor = [UIColor purpleColor];    // 按钮背景颜色   - 选中，默认白色
-    self.tabBarBgColor  = [UIColor orangeColor];    // tabBar的背景颜色(默认白色)
+    self.normalColor    = [UIColor blackColor];         // 按钮标题字体颜色 - 未选中，默认黑色
+    self.currentColor   = [UIColor whiteColor];         // 按钮标题字体颜色 - 选中，默认橙色
+    self.normalBgColor  = [UIColor blueColor];          // 按钮背景颜色   - 未选中，默认白色
+    self.currentBgColor = [UIColor purpleColor];        // 按钮背景颜色   - 选中，默认白色
+    self.tabBarBgColor  = [UIColor lightGrayColor];     // tabBar的背景颜色(默认白色)
+    // 字体
+    self.normalFont     = [UIFont systemFontOfSize:13]; // 按钮标题字体 - 未选中，默认14，非加粗
+    self.currentFont    = [UIFont systemFontOfSize:18]; // 按钮标题字体 - 选中，默认同未选中字体一样
     // 高度
-    self.tabBarHeight   = 30;                       // tabBar高度（同按钮的高度一样，默认40）
+    self.tabBarHeight   = 30;                           // tabBar高度（同按钮的高度一样，默认40）
     // 按钮宽度
-    self.unifiedWidth   = YES;                      // 是否所有按钮的宽度都相等，如果此值为YES，需要设置按钮宽度，默认100
-    self.buttonWidth    = 70;                       // 按钮宽度，如果未设置unifiedWidth为YES，则设置了也不起作用
+    self.unifiedWidth   = YES;                          // 是否所有按钮的宽度都相等，如果此值为YES，需要设置按钮宽度，默认100
+    self.buttonWidth    = 70;                           // 按钮宽度，如果未设置unifiedWidth为YES，则设置了也不起作用
     // 指示条
-    self.showLine       = YES;                      // 是否显示指示条，默认不显示
-    self.lineHeight     = 2;                        // 指示条高度，默认1
-    self.lineColor      = [UIColor blueColor];      // 指示条颜色，默认跟选中时的标题颜色一样
-    self.lineWidth      = 50;                       // 指示条宽度，默认跟按钮宽度相同（如果按钮不是相同宽度的，须谨慎设置）
-    self.lineCenter     = YES;                      // 指示条是否居中显示，默认不居中
+    self.showLine       = YES;                          // 是否显示指示条，默认不显示
+    self.lineHeight     = 2;                            // 指示条高度，默认1
+    self.lineColor      = [UIColor blueColor];          // 指示条颜色，默认跟选中时的标题颜色一样
+    self.lineWidth      = 50;                           // 指示条宽度，默认跟按钮宽度相同（如果按钮不是相同宽度的，须谨慎设置）
+    self.lineCenter     = YES;                          // 指示条是否居中显示，默认不居中
     // 间距
-    self.leftMargin     = 0;                        // tabBar中左边第一个按钮距tabBar左侧的距离，默认0
-    self.rightMargin    = 0;                        // tabBar中右边最后一个按钮距tabBar右侧的距离，默认跟leftMargin相同
-    self.margin         = 10;                       // 按钮之间的间距，默认0
+    self.leftMargin     = 10;                           // tabBar中左边第一个按钮距tabBar左侧的距离，默认0
+    self.rightMargin    = 0;                            // tabBar中右边最后一个按钮距tabBar右侧的距离，默认跟leftMargin相同
+    self.margin         = 10;                           // 按钮之间的间距，默认0
     // 其他
-    self.bounces        = YES;                      // tabBar是否有弹簧效果，默认无
+    self.bounces        = YES;                          // tabBar是否有弹簧效果，默认无
     
     /**
       !!!！! 注意，一定要设置完所有tabBar的所有属性之后再调用这个方法，否则设置的属性将不会起作用

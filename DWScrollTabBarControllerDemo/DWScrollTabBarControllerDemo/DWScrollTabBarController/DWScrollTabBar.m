@@ -40,26 +40,26 @@
     for (int i = 0; i < tabItemArray.count; i++) {
         
         UIButton *tabButton = [[UIButton alloc] init];
-
+        
         [tabButton setTitle:tabItemArray[i] forState:UIControlStateNormal];
         [tabButton setTitleColor:self.normalColor forState:UIControlStateNormal];
         [tabButton setTitleColor:self.currentColor forState:UIControlStateSelected];
         tabButton.backgroundColor = self.normalBgColor;
         
-        tabButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        tabButton.titleLabel.font = self.normalFont;
         
         tabButton.tag = i;      // 用于区分点击的是哪个
         
         [tabButton addTarget:self action:@selector(clickTabButtonOnTabBar:) forControlEvents:UIControlEventTouchUpInside];
-        
-        NSDictionary *textAttrs = @{NSFontAttributeName : [UIFont systemFontOfSize:14]};
+        // 使用选中字体计算按钮大小
+        NSDictionary *textAttrs = @{NSFontAttributeName : self.currentFont};
         
         // 按钮宽度
         CGFloat buttonWidth = 0;
         
         if (!self.isUnifiedWidth) {
             // 如果不使用统一宽度，则使用按钮标题宽度
-            buttonWidth = [tabItemArray[i] boundingRectWithSize:CGSizeMake(kScreenWidth - 2 * self.leftMargin, 14) options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttrs context:nil].size.width;
+            buttonWidth = [tabItemArray[i] boundingRectWithSize:CGSizeMake(kScreenWidth - 2 * self.leftMargin, self.tabBarHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttrs context:nil].size.width;
         } else {
             // 如果未设置按钮宽度，默认100
             buttonWidth = self.buttonWidth;
@@ -119,11 +119,13 @@
     self.selectedButton.backgroundColor = self.normalBgColor;
     UIView *selectedLine = self.lineDict[[NSString stringWithFormat:@"%ld", self.selectedButton.tag]];
     selectedLine.hidden = YES;
+    self.selectedButton.titleLabel.font = self.normalFont;
     
     button.selected = YES;
     button.backgroundColor = self.currentBgColor;
     UIView *currentLine = self.lineDict[[NSString stringWithFormat:@"%ld", button.tag]];
     currentLine.hidden = NO;
+    button.titleLabel.font = self.currentFont;
     
     self.selectedButton = button;
     // 滚动tabBar
@@ -144,7 +146,7 @@
         
         CGFloat offsetX = maxWidth - kScreenWidth;
         if (button.tag < self.tabItemArray.count - 1){
-            offsetX = offsetX + 60.0f;
+            offsetX += button.frame.size.width;
         }
         
         if (button.tag == self.tabItemArray.count - 1) {
