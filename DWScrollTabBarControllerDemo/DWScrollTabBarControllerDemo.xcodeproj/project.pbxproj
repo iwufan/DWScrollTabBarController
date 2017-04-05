@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E48344961E952A0C00352466 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344951E952A0C00352466 /* main.m */; };
+		E48344991E952A0C00352466 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344981E952A0C00352466 /* AppDelegate.m */; };
+		E483449C1E952A0C00352466 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E483449B1E952A0C00352466 /* ViewController.m */; };
+		E483449F1E952A0C00352466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E483449D1E952A0C00352466 /* Main.storyboard */; };
+		E48344A11E952A0C00352466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48344A01E952A0C00352466 /* Assets.xcassets */; };
+		E48344A41E952A0C00352466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48344A21E952A0C00352466 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E48344911E952A0C00352466 /* DWScrollTabBarControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWScrollTabBarControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48344951E952A0C00352466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E48344971E952A0C00352466 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E48344981E952A0C00352466 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E483449A1E952A0C00352466 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E483449B1E952A0C00352466 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E483449E1E952A0C00352466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E48344A01E952A0C00352466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E48344A31E952A0C00352466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E48344A51E952A0C00352466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E483448E1E952A0C00352466 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E48344881E952A0B00352466 = {
+			isa = PBXGroup;
+			children = (
+				E48344931E952A0C00352466 /* DWScrollTabBarControllerDemo */,
+				E48344921E952A0C00352466 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E48344921E952A0C00352466 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E48344911E952A0C00352466 /* DWScrollTabBarControllerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E48344931E952A0C00352466 /* DWScrollTabBarControllerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E48344971E952A0C00352466 /* AppDelegate.h */,
+				E48344981E952A0C00352466 /* AppDelegate.m */,
+				E483449A1E952A0C00352466 /* ViewController.h */,
+				E483449B1E952A0C00352466 /* ViewController.m */,
+				E483449D1E952A0C00352466 /* Main.storyboard */,
+				E48344A01E952A0C00352466 /* Assets.xcassets */,
+				E48344A21E952A0C00352466 /* LaunchScreen.storyboard */,
+				E48344A51E952A0C00352466 /* Info.plist */,
+				E48344941E952A0C00352466 /* Supporting Files */,
+			);
+			path = DWScrollTabBarControllerDemo;
+			sourceTree = "<group>";
+		};
+		E48344941E952A0C00352466 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E48344951E952A0C00352466 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E48344901E952A0C00352466 /* DWScrollTabBarControllerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E48344A81E952A0C00352466 /* Build configuration list for PBXNativeTarget "DWScrollTabBarControllerDemo" */;
+			buildPhases = (
+				E483448D1E952A0C00352466 /* Sources */,
+				E483448E1E952A0C00352466 /* Frameworks */,
+				E483448F1E952A0C00352466 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DWScrollTabBarControllerDemo;
+			productName = DWScrollTabBarControllerDemo;
+			productReference = E48344911E952A0C00352466 /* DWScrollTabBarControllerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E48344891E952A0B00352466 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = david;
+				TargetAttributes = {
+					E48344901E952A0C00352466 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E483448C1E952A0B00352466 /* Build configuration list for PBXProject "DWScrollTabBarControllerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E48344881E952A0B00352466;
+			productRefGroup = E48344921E952A0C00352466 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E48344901E952A0C00352466 /* DWScrollTabBarControllerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E483448F1E952A0C00352466 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E48344A41E952A0C00352466 /* LaunchScreen.storyboard in Resources */,
+				E48344A11E952A0C00352466 /* Assets.xcassets in Resources */,
+				E483449F1E952A0C00352466 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E483448D1E952A0C00352466 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E483449C1E952A0C00352466 /* ViewController.m in Sources */,
+				E48344991E952A0C00352466 /* AppDelegate.m in Sources */,
+				E48344961E952A0C00352466 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E483449D1E952A0C00352466 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E483449E1E952A0C00352466 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E48344A21E952A0C00352466 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E48344A31E952A0C00352466 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E48344A61E952A0C00352466 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E48344A71E952A0C00352466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E48344A91E952A0C00352466 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DWScrollTabBarControllerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.DWScrollTabBarControllerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E48344AA1E952A0C00352466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DWScrollTabBarControllerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.DWScrollTabBarControllerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E483448C1E952A0B00352466 /* Build configuration list for PBXProject "DWScrollTabBarControllerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E48344A61E952A0C00352466 /* Debug */,
+				E48344A71E952A0C00352466 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E48344A81E952A0C00352466 /* Build configuration list for PBXNativeTarget "DWScrollTabBarControllerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E48344A91E952A0C00352466 /* Debug */,
+				E48344AA1E952A0C00352466 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E48344891E952A0B00352466 /* Project object */;
+}
