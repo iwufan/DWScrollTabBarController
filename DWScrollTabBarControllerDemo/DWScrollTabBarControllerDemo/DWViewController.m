@@ -56,7 +56,7 @@
     // 添加所有需要展示的列表
     self.tableViewArray = [self setupSubViews];
     // 加载数据，默认加载第一个列表的数据
-    [self loadDataWithID:0];
+    [self loadDataWithTypeID:0];
 }
 /**
  * 添加各个列表
@@ -122,7 +122,7 @@
 - (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
     [super tabBar:tabBar didClickTabButton:tabBarButton];
     // 加载某一类的数据
-    [self loadDataWithID:tabBarButton.tag];
+    [self loadDataWithTypeID:tabBarButton.tag];
 }
 /**
  * 滚动列表切换页面时
@@ -130,11 +130,11 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [super scrollViewDidEndDecelerating:scrollView];
     // 加载某一类的数据
-    [self loadDataWithID:self.currentPage];
+    [self loadDataWithTypeID:self.currentPage];
 }
 
 #pragma mark - 加载数据
-- (void)loadDataWithID:(NSInteger)typeID {
+- (void)loadDataWithTypeID:(NSInteger)typeID {
 
     // 清空，防止重复添加数据
     if (self.dataArray.count != 0) {
