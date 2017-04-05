@@ -51,9 +51,9 @@
   // 其他
   self.bounces        = YES;                          // tabBar是否有弹簧效果，默认无
   ```
-#### Tip: You DO NOT have to setup all these properties. Every property has a default value.
-`unifiedWidth` is a special property. It's default value is 'NO', so if you do not set it as 'YES', the tabBar item's width is calculated based on the item's title. The more words on the title, the wider the title.<br>
-If you set `unifiedWidth` as 'YES', every item's width will be the same. You should set `buttonWidth` as you want, it has a default value 100. 
+  #### Tip: You DO NOT have to setup all these properties. Every property has a default value.
+    `unifiedWidth` is a special property. It's default value is 'NO', so if you do not set it as 'YES', the tabBar item's width is calculated based on the item's title. The more words on the title, the wider the title.<br>
+  If you set `unifiedWidth` as 'YES', every item's width will be the same. You should set `buttonWidth` as you want, it has a default value 100. 
 - setup data in `viewDidLoad` method
   ```
   /**
@@ -64,14 +64,14 @@ If you set `unifiedWidth` as 'YES', every item's width will be the same. You sho
   // 添加所有需要展示的列表
   self.tableViewArray = [self setupSubViews];
   ```
-#### Tip: You MUST setup data AFTER setting properties. Or you will get nothing in the tabBar.
-The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
+  #### Tip: You MUST setup data AFTER setting properties. Or you will get nothing in the tabBar.
+  The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
 - loadDefaultData in `viewDidLoad` method
   ```
   [self loadDataWithTypeID:0];
   ```
-Load first type's data by default.<br>
-This method should be implemented by yourself. Please refer to demo for details.
+  Load first type's data by default.<br>
+  This method should be implemented by yourself. Please refer to demo for details.
 - Implement `DWScrollTabBarController` methods.
   ```
   /**
@@ -91,6 +91,6 @@ This method should be implemented by yourself. Please refer to demo for details.
       [self loadDataWithTypeID:self.currentPage];
   }
   ```
-#### Tip: You ONLY can use these two methods above to load every page's data. Please add your 'loadData' method to these two methods.
-- Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. 
+  #### Tip: You ONLY can use these two methods above to load every page's data. Please add your 'loadData' method to these two methods.
+  - Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. 
 #### Plese refer to demo for details.
