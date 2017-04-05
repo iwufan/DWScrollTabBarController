@@ -10,11 +10,11 @@
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example5.gif)
 
 # How to use it
-- Manual import<br>
+- ### Manual import<br>
 
   Drag all the files in the `DWScrollTabBarController` folder to your project.
 
-- extends DWScrollTabBarViewController <br>
+- ### Extends DWScrollTabBarViewController <br>
   ```
   #import "DWScrollTabBarViewController.h"
 
@@ -22,7 +22,7 @@
 
   @end
   ```
-- setup customized properties in `viewDidLoad` method
+- ### Setup customized properties in `viewDidLoad` method
   ```
   // 颜色
   self.normalColor    = [UIColor blackColor];         // 按钮标题字体颜色 - 未选中，默认黑色
@@ -54,7 +54,7 @@
   #### Tip: You DO NOT have to setup all these properties. Every property has a default value.
     `unifiedWidth` is a special property. It's default value is 'NO', so if you do not set it as 'YES', the tabBar item's width is calculated based on the item's title. The more words on the title, the wider the title.<br>
   If you set `unifiedWidth` as 'YES', every item's width will be the same. You should set `buttonWidth` as you want, it has a default value 100. 
-- setup data in `viewDidLoad` method
+- ### Setup data in `viewDidLoad` method
   ```
   /**
     !!!！! 注意，一定要设置完所有tabBar的所有属性之后再调用这个方法，否则设置的属性将不会起作用
@@ -66,13 +66,13 @@
   ```
   #### Tip: You MUST setup data AFTER setting properties. Or you will get nothing in the tabBar.
   The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
-- loadDefaultData in `viewDidLoad` method
+- ### LoadDefaultData in `viewDidLoad` method
   ```
   [self loadDataWithTypeID:0];
   ```
   Load first type's data by default.<br>
   This method should be implemented by yourself. Please refer to demo for details.
-- Implement `DWScrollTabBarController` methods.
+- ### Implement `DWScrollTabBarController` delegate methods.
   ```
   /**
    * 点击tabBar上的按钮
