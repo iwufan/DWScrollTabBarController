@@ -1,15 +1,15 @@
 //
-//  DWScrollTabBarViewController.h
-//  DWScrollTabBarDemo
+//  DWScrollTabBarController.h
+//  DWScrollTabBarControllerDemo
 //
-//  Created by jiadawei on 16/03/2017.
+//  Created by jiadawei on 06/04/2017.
 //  Copyright © 2017 david. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "DWScrollTabBar.h"
 
-@interface DWScrollTabBarViewController : UIViewController <DWScrollTabBarDelegate, UIScrollViewDelegate>
+@interface DWScrollTabBarController : UIViewController <DWScrollTabBarDelegate, UIScrollViewDelegate>
 
 /**顶部tabBar*/
 @property (nonatomic, strong) DWScrollTabBar                        *scrollTabBar;

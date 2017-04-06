@@ -1,25 +1,25 @@
 //
-//  DWScrollTabBarViewController.m
-//  DWScrollTabBarDemo
+//  DWScrollTabBarController.m
+//  DWScrollTabBarControllerDemo
 //
-//  Created by jiadawei on 16/03/2017.
+//  Created by jiadawei on 06/04/2017.
 //  Copyright © 2017 david. All rights reserved.
 //
 
-#import "DWScrollTabBarViewController.h"
+#import "DWScrollTabBarController.h"
 #import "DWScrollTabBar.h"
 
 #define DW_SCREEN_WIDTH self.view.frame.size.width
 #define DW_SCREEN_HEIGHT self.view.frame.size.height
 
-@interface DWScrollTabBarViewController ()
+@interface DWScrollTabBarController ()
 
 /**上一次打开的列表*/
 @property (nonatomic, assign) NSInteger previousPage;
 
 @end
 
-@implementation DWScrollTabBarViewController
+@implementation DWScrollTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +29,7 @@
 }
 
 - (void)setTypesArray:(NSArray *)typesArray {
-
+    
     _typesArray = typesArray;
     
     // 添加tabbar
@@ -67,14 +67,14 @@
  * 将需要展示的列表都加入到scrollView中
  */
 - (void)setTableViewArray:(NSMutableArray *)tableViewArray{
-
+    
     _tableViewArray = tableViewArray;
     
     [self addTableViews];
 }
 
 - (void)addTableViews {
-   
+    
     CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
     
     for (int i = 0; i < self.typesArray.count; i++) {
@@ -102,26 +102,26 @@
 }
 
 - (void)setupButtonWidth {
-
+    
     self.scrollTabBar.unifiedWidth  = self.isUnifiedWidth;
     self.scrollTabBar.buttonWidth   = self.buttonWidth <= 0 && self.isUnifiedWidth ? 100 : self.buttonWidth;
 }
 
 - (void)setupMargins {
-
+    
     self.scrollTabBar.margin        = self.margin;
     self.scrollTabBar.leftMargin    = self.leftMargin;
     self.scrollTabBar.rightMargin   = self.rightMargin;
 }
 
 - (void)setupDefaults {
-
+    
     self.scrollTabBar.bounces       = self.isBounces;
     self.scrollTabBar.tabBarHeight  =  self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
 }
 
 - (void)setupLine {
-
+    
     self.scrollTabBar.lineHeight    = self.lineHeight <= 0 ? 1 : self.lineHeight;
     self.scrollTabBar.lineWidth     = self.lineWidth;
     self.scrollTabBar.lineCenter    = self.isLineCenter;
@@ -129,7 +129,7 @@
 }
 
 - (void)setupFonts {
-
+    
     self.scrollTabBar.normalFont = self.normalFont == nil ? [UIFont systemFontOfSize:14] : self.normalFont;
     self.scrollTabBar.currentFont = self.currentFont == nil ? self.scrollTabBar.normalFont : self.currentFont;
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2017 david. All rights reserved.
 //
 
-#import "DWScrollTabBarViewController.h"
+#import "DWScrollTabBarController.h"
 
-@interface DWViewController : DWScrollTabBarViewController
+@interface DWViewController : DWScrollTabBarController
 
 @end
