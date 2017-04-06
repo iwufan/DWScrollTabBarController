@@ -1,6 +1,12 @@
 # DWScrollTabBarController
 
 - A scrollable tabBar with dynamic items. Each item shows a specific view.
+
+# Why shoud I use this framework
+- You can build a view controller with scrollable tabBar in only a few steps.<br>
+- The items in the tabBar can be dynamic. The items in the tabBar can be different every time you open the view controller. <br>
+- You don't have to create a class file for each item. What you should do is to create a view for each item.<br>
+
 - You can use this framework to create view controllers like these below.
 
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example1.gif)
@@ -14,11 +20,11 @@
 
   Drag all the files in the `DWScrollTabBarController` folder to your project.
 
-- ### Extends DWScrollTabBarViewController <br>
+- ### Extends DWScrollTabBarController <br>
   ```
-  #import "DWScrollTabBarViewController.h"
+  #import "DWScrollTabBarController.h"
 
-  @interface YourViewController : DWScrollTabBarViewController
+  @interface YourViewController : DWScrollTabBarController
 
   @end
   ```
