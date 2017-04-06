@@ -82,11 +82,11 @@
   The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
 - ### LoadDefaultData in `viewDidLoad` method
   ```
-  // 默认加载第一个类别的数据
-  [self loadDataWithTypeID:0];
+  [self loadDataWithTypeID:0];
   ```
-  Load first type's data by default.<br>
+  Load first type's data by default.
   This method should be implemented by yourself. Please refer to demo for details.
+  
 - ### Implement `DWScrollTabBarController` delegate methods. 
   You refer to demo for details. You can use the codes of the two methods in the demo directly.
   ```
