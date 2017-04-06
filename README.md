@@ -88,8 +88,8 @@
   This method should be implemented by yourself. Please refer to demo for details.
   
 - ### Implement `DWScrollTabBarController` delegate methods. 
-  You refer to demo for details. You can use the codes of the two methods in the demo directly.
-  ```
+  Please refer to demo for details. You can use the codes of the two methods in the demo directly.
+  ```
   /**
    * 点击tabBar上的按钮
    */
@@ -106,24 +106,24 @@
   }
   ```
   #### Tip: You ONLY can use these two methods above to load every page's data. Please add your 'loadData' method to these two methods.
-  - Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. 
+  - Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. <br>
   #### NOTE!
-  - You should add below codes to your project. Or you will run into a problem when pull up or down the tableview.<br>
-    Add a property `pullTableView`<br>
+  You should add below codes to your project. Or you will run into a problem when pull up or down the tableview.<br>
+  - Add a property `pullTableView`
     ```
-    /**是否上拉或下拉列表*/
-    @property (nonatomic, assign, getter=isPullTableView) BOOL  pullTableView;
+    /**是否上拉或下拉列表*/<br>
+    @property (nonatomic, assign, getter=isPullTableView) BOOL  pullTableView;<br>
     ```
-    Implements scrollViewDidScroll method<br>
+  - Implements scrollViewDidScroll method
     ```
     - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-      // 设置是否是上拉或下拉列表
+      // 设置是否是上拉或下拉列表<br>
       if (scrollView.contentOffset.y != 0) {
           self.pullTableView = YES;
       }
     }
     ```
-    Add a judgement in this method.<br>
+  - Add a judgement in this method.
     ```
     /**
      * 滚动列表切换页面时
