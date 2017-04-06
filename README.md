@@ -88,23 +88,23 @@
   This method should be implemented by yourself. Please refer to demo for details.
   
 - ### Implement `DWScrollTabBarController` delegate methods. 
-  Please refer to demo for details. You can use the codes of the two methods in the demo directly.
-  ```
-  /**
-   * 点击tabBar上的按钮
-   */
-  - (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
-      // 调用父类方法
-      // 加载某一类的数据
-  }
-  /**
-   * 滚动列表切换页面时
-   */
-  - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-      // 调用父类方法
-      // 加载某一类的数据
-  }
-  ```
+    Please refer to demo for details. You can use the codes of the two methods in the demo directly.
+    ```
+    /**
+     * 点击tabBar上的按钮
+     */
+    - (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
+        // 调用父类方法
+        // 加载某一类的数据
+    }
+    /**
+     * 滚动列表切换页面时
+     */
+    - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+        // 调用父类方法
+        // 加载某一类的数据
+    }
+    ```
   #### Tip: You ONLY can use these two methods above to load every page's data. Please add your 'loadData' method to these two methods.
   - Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. <br>
   #### NOTE!
