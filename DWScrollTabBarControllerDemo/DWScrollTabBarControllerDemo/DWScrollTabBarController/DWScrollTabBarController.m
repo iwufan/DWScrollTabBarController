@@ -93,12 +93,13 @@
 
 - (void)setupColors {
     
-    self.scrollTabBar.normalColor       = self.normalColor == nil ? [UIColor blackColor] : self.normalColor;
-    self.scrollTabBar.currentColor      = self.currentColor == nil ? [UIColor orangeColor] : self.currentColor ;
-    self.scrollTabBar.normalBgColor     = self.normalBgColor == nil ? [UIColor whiteColor] : self.normalBgColor;
-    self.scrollTabBar.currentBgColor    = self.currentBgColor == nil ? [UIColor whiteColor] : self.currentBgColor;
-    self.scrollTabBar.backgroundColor   = self.tabBarBgColor == nil ? [UIColor whiteColor] : self.tabBarBgColor;
-    self.scrollTabBar.lineColor         = self.lineColor == nil ? self.scrollTabBar.currentColor : self.lineColor;
+    self.scrollTabBar.normalColor        = self.normalColor         == nil ? [UIColor blackColor]   : self.normalColor;
+    self.scrollTabBar.currentColor       = self.currentColor        == nil ? [UIColor orangeColor]  : self.currentColor ;
+    self.scrollTabBar.normalBgColor      = self.normalBgColor       == nil ? [UIColor whiteColor]   : self.normalBgColor;
+    self.scrollTabBar.currentBgColor     = self.currentBgColor      == nil ? [UIColor whiteColor]   : self.currentBgColor;
+    self.scrollTabBar.backgroundColor    = self.tabBarBgColor       == nil ? [UIColor whiteColor]   : self.tabBarBgColor;
+    self.scrollTabBar.indicatorLineColor = self.indicatorLineColor  == nil ? self.scrollTabBar.currentColor : self.indicatorLineColor;
+    self.scrollTabBar.bottomLineColor    = self.bottomLineColor     == nil ? [UIColor lightGrayColor] : self.bottomLineColor;
 }
 
 - (void)setupButtonWidth {
@@ -109,7 +110,7 @@
 
 - (void)setupMargins {
     
-    self.scrollTabBar.margin        = self.margin;
+    self.scrollTabBar.buttonMargin  = self.buttonMargin;
     self.scrollTabBar.leftMargin    = self.leftMargin;
     self.scrollTabBar.rightMargin   = self.rightMargin;
 }
@@ -121,11 +122,14 @@
 }
 
 - (void)setupLine {
-    
-    self.scrollTabBar.lineHeight    = self.lineHeight <= 0 ? 1 : self.lineHeight;
-    self.scrollTabBar.lineWidth     = self.lineWidth;
-    self.scrollTabBar.lineCenter    = self.isLineCenter;
-    self.scrollTabBar.showLine      = self.isShowLine;
+    // 指示条
+    self.scrollTabBar.indicatorLineHeight   = self.indicatorLineHeight <= 0 ? 1 : self.indicatorLineHeight;
+    self.scrollTabBar.indicatorLineWidth    = self.indicatorLineWidth;
+    self.scrollTabBar.indicatorLineCenter   = self.isIndicatorLineCenter;
+    self.scrollTabBar.showIndicatorLine     = self.isShowIndicatorLine;
+    // 分割线
+    self.scrollTabBar.bottomLineHeight      = self.bottomLineHeight <= 0 ? 1 : self.bottomLineHeight;
+    self.scrollTabBar.showBottomLine        = self.isShowBottomLine;
 }
 
 - (void)setupFonts {
@@ -172,9 +176,14 @@
     
     if (_scrollView == nil) {
         
-        CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
+        CGFloat tabBarHeight    = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
+        CGFloat viewMargin = 0;
         
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,  64 + tabBarHeight, DW_SCREEN_WIDTH, DW_SCREEN_HEIGHT - tabBarHeight)];
+        if (self.showViewMargin) {
+            
+            viewMargin = self.viewMargin <= 0 ? 10 : self.viewMargin;
+        }
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,  64 + tabBarHeight + viewMargin, DW_SCREEN_WIDTH, DW_SCREEN_HEIGHT - tabBarHeight - viewMargin)];
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.bounces = NO;

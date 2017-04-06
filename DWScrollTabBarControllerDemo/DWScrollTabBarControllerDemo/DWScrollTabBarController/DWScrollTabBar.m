@@ -24,8 +24,21 @@
 - (void)setTabItemArray:(NSArray *)tabItemArray{
     
     _tabItemArray = tabItemArray;
-    
     [self addTabButtonsWithTabItemArray:tabItemArray];
+    [self addBottomLine];
+}
+
+- (void)addBottomLine {
+
+    if (self.isShowBottomLine) {
+        
+        UIView *line = [[UIView alloc] init];
+        line.backgroundColor = self.bottomLineColor;
+        
+        line.frame = CGRectMake(0, self.tabBarHeight - self.bottomLineHeight, self.bounds.size.width, self.bottomLineHeight);
+        
+        [self addSubview:line];
+    }
 }
 
 - (void)addTabButtonsWithTabItemArray:(NSArray *)tabItemArray{
@@ -67,22 +80,22 @@
         
         buttonWidths += buttonWidth;    // 所有按钮的宽度
         
-        leftOffset = self.leftMargin + buttonWidths + self.margin * i - buttonWidth;
+        leftOffset = self.leftMargin + buttonWidths + self.buttonMargin * i - buttonWidth;
         
         tabButton.frame = CGRectMake(leftOffset, 0, buttonWidth, self.tabBarHeight);
         
         [self.scrollView addSubview:tabButton];
         // 显示时，添加线
-        if (self.isShowLine) {
+        if (self.isShowIndicatorLine) {
             // 添加指示线
-            CGFloat lineWidth = self.lineWidth <= 0 ? buttonWidth : self.lineWidth;
+            CGFloat lineWidth = self.indicatorLineWidth <= 0 ? buttonWidth : self.indicatorLineWidth;
             UIView *line = [[UIView alloc] init];
-            line.backgroundColor = self.lineColor;
+            line.backgroundColor = self.indicatorLineColor;
             line.hidden = YES;
             
-            CGFloat lineX = self.isLineCenter ? (buttonWidth - lineWidth) / 2 : 0;
+            CGFloat lineX = self.isIndicatorLineCenter ? (buttonWidth - lineWidth) / 2 : 0;
             
-            line.frame = CGRectMake(lineX, self.tabBarHeight - self.lineHeight, lineWidth, self.lineHeight);
+            line.frame = CGRectMake(lineX, self.tabBarHeight - self.indicatorLineHeight, lineWidth, self.indicatorLineHeight);
             
             [tabButton addSubview:line];
             
