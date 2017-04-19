@@ -64,7 +64,7 @@
     NSMutableArray *tempArray = [NSMutableArray array];
     
     for (int i = 0; i < 20; i++) {
-        NSString *title = [NSString stringWithFormat:@"%@ - 类", self.typeID];
+        NSString *title = [NSString stringWithFormat:@"第%@类", self.typeID];
         [tempArray addObject:[NSString stringWithFormat:@"%@ - %d", title, i]];
     }
     // 得到某一类的数据
