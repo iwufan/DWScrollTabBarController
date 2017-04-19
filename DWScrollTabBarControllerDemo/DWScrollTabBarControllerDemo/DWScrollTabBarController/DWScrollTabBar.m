@@ -165,17 +165,20 @@
  */
 - (void)scrollTabBarWithButton:(UIButton *)button{
     
-    if (!self.fromScrollTable) {
-        return;
-    }
-    
     CGFloat maxWidth = button.frame.origin.x + button.frame.size.width;
     
-    if (maxWidth > kScreenWidth){
+    if (maxWidth > kScreenWidth || kScreenWidth - maxWidth < 30){
         
         CGFloat offsetX = maxWidth - kScreenWidth;
+        
         if (button.tag < self.tabItemArray.count - 1){
-            offsetX += button.frame.size.width;
+            
+            offsetX += button.frame.size.width + 30;
+            
+            if (offsetX > self.scrollView.contentSize.width - kScreenWidth) {
+                
+                offsetX = self.scrollView.contentSize.width - kScreenWidth;
+            }
         }
         
         if (button.tag == self.tabItemArray.count - 1) {

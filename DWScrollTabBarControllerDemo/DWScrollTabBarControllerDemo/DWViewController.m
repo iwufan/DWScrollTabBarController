@@ -26,7 +26,7 @@
     self.normalColor    = [UIColor blackColor];         // 按钮标题字体颜色 - 未选中，默认黑色
     self.currentColor   = [UIColor whiteColor];         // 按钮标题字体颜色 - 选中，默认橙色
     self.normalBgColor  = [UIColor blueColor];          // 按钮背景颜色   - 未选中，默认白色
-    self.currentBgColor = [UIColor purpleColor];        // 按钮背景颜色   - 选中，默认白色
+    self.currentBgColor = [UIColor orangeColor];        // 按钮背景颜色   - 选中，默认白色
     self.tabBarBgColor  = [UIColor whiteColor];         // tabBar的背景颜色(默认白色)
     // 字体
     self.normalFont     = [UIFont systemFontOfSize:13]; // 按钮标题字体 - 未选中，默认14，非加粗
