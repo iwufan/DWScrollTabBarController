@@ -63,15 +63,17 @@
     // 加载数据（从服务器请求数据）
     NSMutableArray *tempArray = [NSMutableArray array];
     
+    NSArray *titleArray =  @[@"军事", @"游戏", @"社会", @"体育", @"娱乐", @"头条", @"女性", @"政治", @"时尚"];
+    
     for (int i = 0; i < 20; i++) {
-        NSString *title = [NSString stringWithFormat:@"第%@类", self.typeID];
-        [tempArray addObject:[NSString stringWithFormat:@"%@ - %d", title, i]];
+        [tempArray addObject:[NSString stringWithFormat:@"%@ - %d", titleArray[self.typeID.intValue], i]];
     }
     // 得到某一类的数据
     self.dataArray = tempArray;
     
     [self.tableView reloadData];
 }
+
 
 #pragma mark - getter
 - (UITableView *)tableView{
