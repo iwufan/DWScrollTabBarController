@@ -13,7 +13,7 @@
 /*
  * 点击选项卡按钮
  */
-- (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton;
+- (BOOL)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton;
 
 @end
 
@@ -72,9 +72,14 @@
 @property (nonatomic, assign, getter=isFromScrollTable) BOOL        fromScrollTable;
 
 @property (nonatomic, weak) id<DWScrollTabBarDelegate>              delegate;
+
 /**
  * 点击tabBarButton
  */
 - (void)clickTabButton:(UIButton *)button;
+/**
+ * 根据索引点击tabBarButton上的按钮
+ */
+- (void)clickButtonAtIndex:(NSInteger)index;
 
 @end

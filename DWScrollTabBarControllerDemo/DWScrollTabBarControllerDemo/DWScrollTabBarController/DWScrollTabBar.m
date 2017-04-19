@@ -8,7 +8,6 @@
 
 #import "DWScrollTabBar.h"
 
-
 #define kScreenWidth self.frame.size.width
 
 @interface DWScrollTabBar ()
@@ -17,6 +16,9 @@
 @property (nonatomic, strong) UIButton              *selectedButton;
 /**存放每个按钮对应的指示条*/
 @property (nonatomic, strong) NSMutableDictionary   *lineDict;
+/**所有按钮*/
+@property (nonatomic, strong) NSMutableArray        *buttonArray;
+
 @end
 
 @implementation DWScrollTabBar
@@ -29,7 +31,7 @@
 }
 
 - (void)addBottomLine {
-
+    
     if (self.isShowBottomLine) {
         
         UIView *line = [[UIView alloc] init];
@@ -85,6 +87,9 @@
         tabButton.frame = CGRectMake(leftOffset, 0, buttonWidth, self.tabBarHeight);
         
         [self.scrollView addSubview:tabButton];
+        
+        [self.buttonArray addObject:tabButton];
+        
         // 显示时，添加线
         if (self.isShowIndicatorLine) {
             // 添加指示线
@@ -113,6 +118,13 @@
     // 设置scrollView的内容大小
     CGFloat rightMargin = self.rightMargin > 0 ? self.rightMargin : self.leftMargin;
     self.scrollView.contentSize = CGSizeMake(leftOffset + rightMargin, 0);
+}
+
+- (void)clickButtonAtIndex:(NSInteger)index {
+    
+    UIButton *button = self.buttonArray[index];
+    
+    [self clickTabButtonOnTabBar:button];
 }
 
 - (void)clickTabButtonOnTabBar:(UIButton *)button{
@@ -152,6 +164,10 @@
  * 滚动tabBar
  */
 - (void)scrollTabBarWithButton:(UIButton *)button{
+    
+    if (!self.fromScrollTable) {
+        return;
+    }
     
     CGFloat maxWidth = button.frame.origin.x + button.frame.size.width;
     
@@ -196,5 +212,13 @@
     return _lineDict;
 }
 
+- (NSMutableArray *)buttonArray{
+    
+    if (_buttonArray == nil) {
+        _buttonArray = [[NSMutableArray alloc] init];
+    }
+    
+    return _buttonArray;
+}
 
 @end

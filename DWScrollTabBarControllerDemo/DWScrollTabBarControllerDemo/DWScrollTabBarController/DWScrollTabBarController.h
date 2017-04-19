@@ -69,5 +69,12 @@
 @property (nonatomic, assign) CGFloat                               buttonWidth;
 /**是否有弹簧效果（默认无）*/
 @property (nonatomic, assign, getter=isBounces) CGFloat             bounces;
+/**tabBar是否可以滚动（默认可以滚动）*/
+@property (nonatomic, assign, getter=isScrollable) CGFloat          scrollable;
+
+/**
+ * 根据索引点击tabBarButton上的按钮
+ */
+- (void)clickButtonAtIndex:(NSInteger)index;
 
 @end

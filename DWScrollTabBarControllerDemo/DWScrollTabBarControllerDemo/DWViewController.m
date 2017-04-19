@@ -7,12 +7,9 @@
 //
 
 #import "DWViewController.h"
+#import "DWTableView.h"
 
-@interface DWViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) NSMutableArray                *dataArray;
-/**是否上拉或下拉列表*/
-@property (nonatomic, assign, getter=isPullTableView) BOOL  pullTableView;
+@interface DWViewController ()
 
 @end
 
@@ -50,13 +47,15 @@
     self.bottomLineHeight     = 1;                      // 分割线高度，默认1
     self.bottomLineColor      = [UIColor blackColor];   // 分割线颜色，默认lightGrayColor
     // 间距
-    self.showViewMargin   = YES;                        // 是否在tabBar和下方view中间显示间距
-    self.viewMargin       = 10;                         // 间距大小
+    self.showViewMargin = YES;                          // 是否在tabBar和下方view中间显示间距
+    self.viewMargin     = 10;                           // 间距大小
     self.leftMargin     = 10;                           // tabBar中左边第一个按钮距tabBar左侧的距离，默认0
     self.rightMargin    = 0;                            // tabBar中右边最后一个按钮距tabBar右侧的距离，默认跟leftMargin相同
     self.buttonMargin   = 10;                           // 按钮之间的间距，默认0
     // 其他
     self.bounces        = YES;                          // tabBar是否有弹簧效果，默认无
+    // tabbar是否可以滚动
+    self.scrollable     = YES;                          // 默认可以滚动
     
     /**
       !!!！! 注意，一定要设置完所有tabBar的所有属性之后再调用这个方法，否则设置的属性将不会起作用
@@ -66,111 +65,58 @@
     // 添加所有需要展示的列表
     self.tableViewArray = [self setupSubViews];
     // 加载数据，默认加载第一个列表的数据
-    [self loadDataWithTypeID:0];
+    [self loadTableViewData];
 }
+
 /**
  * 添加各个列表
  */
 - (NSMutableArray *)setupSubViews {
-
+    
     NSMutableArray *typeTableViews = [NSMutableArray array];
     
     for (int i = 0; i < self.typesArray.count; i++) {
-        UITableView *tablView = [[UITableView alloc] init];
-       
-        tablView.delegate = self;
-        tablView.dataSource = self;
         
-        [typeTableViews addObject:tablView];
+        DWTableView *tableView = [[DWTableView alloc] init];
+        
+        [typeTableViews addObject:tableView];
     }
     
     return typeTableViews;
-}
-/**
- * 设置每个列表的数据（所有类别的列表共用一个dataArray）
- */
-- (void)setDataArray:(NSMutableArray *)dataArray {
-    
-    _dataArray = dataArray;
-    
-    UITableView *tableView = self.tableViewArray[self.currentPage];
-    
-    [tableView reloadData];
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.dataArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *cellID = @"tempCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    
-    cell.textLabel.text = self.dataArray[indexPath.row];
-    
-    return cell;
-}
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-   NSLog(@"%@", self.dataArray[indexPath.row]);
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 设置是否是上拉或下拉列表
-    if (scrollView.contentOffset.y != 0) {
-        self.pullTableView = YES;
-    }
 }
 
 #pragma mark - 父类代理方法
 /**
  * 点击tabBar上的按钮
  */
-- (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
-    [super tabBar:tabBar didClickTabButton:tabBarButton];
-    self.currentPage = tabBarButton.tag;
-    // 加载某一类的数据
-    [self loadDataWithTypeID:tabBarButton.tag];
+- (BOOL)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
+    
+    // 如果是滚动引起的点击，则不需要加载数据
+    BOOL isScrolled = [super tabBar:tabBar didClickTabButton:tabBarButton];
+    
+    if (!isScrolled) {
+        // 加载某一类的数据
+        [self loadTableViewData];
+    }
+    
+    return NO;
 }
 /**
  * 滚动列表切换页面时
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // 如果是上拉或下拉列表，直接返回
-    if (self.isPullTableView) {
-        self.pullTableView = NO;
-        return;
-    }
+    
     [super scrollViewDidEndDecelerating:scrollView];
     // 加载某一类的数据
-    [self loadDataWithTypeID:self.currentPage];
+    [self loadTableViewData];
 }
-
-#pragma mark - 加载数据
-- (void)loadDataWithTypeID:(NSInteger)typeID {
-
-    // 清空，防止重复添加数据
-    if (self.dataArray.count != 0) {
-        [self.dataArray removeAllObjects];
-    }
-    // 加载数据（从服务器请求数据）
-    NSMutableArray *tempArray = [NSMutableArray array];
+/**
+ * 根据类别加载不同的数据
+ */
+- (void)loadTableViewData{
     
-    for (int i = 0; i < 20; i++) {
-        NSString *title = self.typesArray[typeID];
-        [tempArray addObject:[NSString stringWithFormat:@"%@ - %d", title, i]];
-    }
-    // 得到某一类的数据
-    self.dataArray = tempArray;
+    DWTableView *allView = self.tableViewArray[self.currentPage];
+    allView.typeID = [NSString stringWithFormat:@"%ld", self.currentPage];
 }
 
 @end

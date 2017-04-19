@@ -26,6 +26,8 @@
     
     // ！！！！ 这句话不加看不到tabBar上的内容
     self.automaticallyAdjustsScrollViewInsets = NO;
+    // 默认可以滚动
+    self.scrollable = YES;
 }
 
 - (void)setTypesArray:(NSArray *)typesArray {
@@ -117,8 +119,9 @@
 
 - (void)setupDefaults {
     
-    self.scrollTabBar.bounces       = self.isBounces;
-    self.scrollTabBar.tabBarHeight  =  self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
+    self.scrollTabBar.bounces                   = self.isBounces;
+    self.scrollTabBar.scrollView.scrollEnabled  = self.isScrollable;
+    self.scrollTabBar.tabBarHeight              =  self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
 }
 
 - (void)setupLine {
@@ -139,15 +142,19 @@
 }
 
 #pragma mark - DWScrollTabBarDelegate
-- (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton{
+- (BOOL)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton{
     
     // 如果是滚动列表引起的选中，则直接返回，不需要再去重复滚动列表
     if (tabBar.isFromScrollTable) {
         
-        return;
+        return YES;
     }
     // 根据选中的tabBar按钮，滚动到相应的列表
     [self.scrollView setContentOffset:CGPointMake(tabBarButton.tag * DW_SCREEN_WIDTH, 0) animated:YES];
+    // 设置当前页数
+    self.currentPage = tabBarButton.tag;
+    
+    return NO;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -169,6 +176,12 @@
     
     // 存储页数
     self.previousPage = self.currentPage;
+}
+
+#pragma mark - 私有方法
+- (void)clickButtonAtIndex:(NSInteger)index {
+    
+    [self.scrollTabBar clickButtonAtIndex:index];
 }
 
 #pragma mark - getter

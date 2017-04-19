@@ -14,6 +14,7 @@
 		E48344A41E952A0C00352466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48344A21E952A0C00352466 /* LaunchScreen.storyboard */; };
 		E48344B01E952C8C00352466 /* DWScrollTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344AD1E952C8C00352466 /* DWScrollTabBar.m */; };
 		E48344B41E952CAB00352466 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48344B31E952CAB00352466 /* DWViewController.m */; };
+		E4F37CAE1EA60BFF0026D933 /* DWTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F37CAD1EA60BFF0026D933 /* DWTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		E48344AD1E952C8C00352466 /* DWScrollTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWScrollTabBar.m; sourceTree = "<group>"; };
 		E48344B21E952CAB00352466 /* DWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWViewController.h; sourceTree = "<group>"; };
 		E48344B31E952CAB00352466 /* DWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
+		E4F37CAC1EA60BFF0026D933 /* DWTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableView.h; sourceTree = "<group>"; };
+		E4F37CAD1EA60BFF0026D933 /* DWTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				E48344981E952A0C00352466 /* AppDelegate.m */,
 				E48344B21E952CAB00352466 /* DWViewController.h */,
 				E48344B31E952CAB00352466 /* DWViewController.m */,
+				E4F37CAC1EA60BFF0026D933 /* DWTableView.h */,
+				E4F37CAD1EA60BFF0026D933 /* DWTableView.m */,
 				E48344A01E952A0C00352466 /* Assets.xcassets */,
 				E48344A21E952A0C00352466 /* LaunchScreen.storyboard */,
 				E48344A51E952A0C00352466 /* Info.plist */,
@@ -86,10 +91,10 @@
 		E48344AB1E952C7600352466 /* DWScrollTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				E48344AC1E952C8C00352466 /* DWScrollTabBar.h */,
-				E48344AD1E952C8C00352466 /* DWScrollTabBar.m */,
 				E458702C1E96092D00366107 /* DWScrollTabBarController.h */,
 				E458702D1E96092D00366107 /* DWScrollTabBarController.m */,
+				E48344AC1E952C8C00352466 /* DWScrollTabBar.h */,
+				E48344AD1E952C8C00352466 /* DWScrollTabBar.m */,
 			);
 			path = DWScrollTabBarController;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			files = (
 				E48344991E952A0C00352466 /* AppDelegate.m in Sources */,
 				E48344961E952A0C00352466 /* main.m in Sources */,
+				E4F37CAE1EA60BFF0026D933 /* DWTableView.m in Sources */,
 				E458702E1E96092D00366107 /* DWScrollTabBarController.m in Sources */,
 				E48344B41E952CAB00352466 /* DWViewController.m in Sources */,
 				E48344B01E952C8C00352466 /* DWScrollTabBar.m in Sources */,
@@ -280,7 +286,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DWScrollTabBarControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.DWScrollTabBarControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +299,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DWScrollTabBarControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.DWScrollTabBarControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
