@@ -83,7 +83,7 @@
   self.tableViewArray = [self setupSubViews];
   ```
   #### Tip: You MUST setup data AFTER setting properties. Or you will get nothing in the tabBar.
-  The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
+  The `setupSubViews` method should be implemented by yourself. Please refer to below for details.
 - ### LoadDefaultData in `viewDidLoad` method
   ```
   [self loadTableViewData];
