@@ -29,13 +29,15 @@
 
   @end
   ```
+  You can make `DWScrollTabBarController` extends your base ViewController in your project if necessary, instead of extending `UIViewController`.
+  
 - ### Setup customized properties in `viewDidLoad` method
   ```
   // 颜色
   self.normalColor    = [UIColor blackColor];         // 按钮标题字体颜色 - 未选中，默认黑色
   self.currentColor   = [UIColor whiteColor];         // 按钮标题字体颜色 - 选中，默认橙色
   self.normalBgColor  = [UIColor blueColor];          // 按钮背景颜色   - 未选中，默认白色
-  self.currentBgColor = [UIColor purpleColor];        // 按钮背景颜色   - 选中，默认白色
+  self.currentBgColor = [UIColor orangeColor];        // 按钮背景颜色   - 选中，默认白色
   self.tabBarBgColor  = [UIColor whiteColor];         // tabBar的背景颜色(默认白色)
   // 字体
   self.normalFont     = [UIFont systemFontOfSize:13]; // 按钮标题字体 - 未选中，默认14，非加粗
@@ -56,13 +58,15 @@
   self.bottomLineHeight     = 1;                      // 分割线高度，默认1
   self.bottomLineColor      = [UIColor blackColor];   // 分割线颜色，默认lightGrayColor
   // 间距
-  self.showViewMargin   = YES;                        // 是否在tabBar和下方view中间显示间距
-  self.viewMargin       = 10;                         // 间距大小
+  self.showViewMargin = YES;                          // 是否在tabBar和下方view中间显示间距
+  self.viewMargin     = 10;                           // 间距大小
   self.leftMargin     = 10;                           // tabBar中左边第一个按钮距tabBar左侧的距离，默认0
   self.rightMargin    = 0;                            // tabBar中右边最后一个按钮距tabBar右侧的距离，默认跟leftMargin相同
   self.buttonMargin   = 10;                           // 按钮之间的间距，默认0
   // 其他
   self.bounces        = YES;                          // tabBar是否有弹簧效果，默认无
+  // tabbar是否可以滚动
+  self.scrollable     = YES;                          // 默认可以滚动
   ```
   #### Tip: You DO NOT have to setup all these properties. Every property has a default value.
     `unifiedWidth` is a special property. It's default value is 'NO', so if you do not set it as 'YES', the tabBar item's width is calculated based on the item's title. The more words on the title, the wider the title.<br>
@@ -82,10 +86,46 @@
   The `setupSubViews` method should be implemented by yourself. Please refer to demo for details.
 - ### LoadDefaultData in `viewDidLoad` method
   ```
-  [self loadDataWithTypeID:0];
+  [self loadTableViewData];
   ```
   Load first type's data by default.
   This method should be implemented by yourself. Please refer to demo for details.
+- ### Create your own tableView to display data.
+  This tableView should have a property `typeID`, and load data in its setter method.
+  ```
+  - (void)setTypeID:(NSString *)typeID {
+    
+      _typeID = typeID;
+
+      [self loadData];
+  }
+  ```
+  Then you can load data based on different types.
+ 
+  Add them to the property `tableViewArray`
+  ```
+  /**
+   * 添加各个列表
+   */
+  - (NSMutableArray *)setupSubViews {
+
+      NSMutableArray *typeTableViews = [NSMutableArray array];
+
+      for (int i = 0; i < self.typesArray.count; i++) {
+
+          DWTableView *tableView = [[DWTableView alloc] init];
+
+          [typeTableViews addObject:tableView];
+      }
+
+      return typeTableViews;
+  }
+  ```
+  ```
+  // 添加所有需要展示的列表
+  self.tableViewArray = [self setupSubViews];
+  ```
+  You can refer to the demo project for the example tableView.
   
 - ### Implement `DWScrollTabBarController` delegate methods. 
     Please refer to demo for details. You can use the codes of the two methods in the demo directly.
@@ -93,7 +133,7 @@
     /**
      * 点击tabBar上的按钮
      */
-    - (void)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
+    - (BOOL)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton {
         // 调用父类方法
         // 加载某一类的数据
     }
@@ -103,40 +143,18 @@
     - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
         // 调用父类方法
         // 加载某一类的数据
+    }
+    ```
+    ```
+    /**
+     * 根据类别加载不同的数据
+     */
+    - (void)loadTableViewData{
+
+        DWTableView *allView = self.tableViewArray[self.currentPage];
+        allView.typeID = [NSString stringWithFormat:@"%ld", self.currentPage];
     }
     ```
   #### Tip: You ONLY can use these two methods above to load every page's data. Please add your 'loadData' method to these two methods.
   - Above is all you shoud do with this framework. More you shoud do are add customized views to this framework and load data from your server. <br>
-  #### NOTE!
-  You should add below codes to your project. Or you will run into a problem when pull up or down the tableview.<br>
-  - Add a property `pullTableView`
-    ```
-    /**是否上拉或下拉列表*/<br>
-    @property (nonatomic, assign, getter=isPullTableView) BOOL  pullTableView;<br>
-    ```
-  - Implements scrollViewDidScroll method
-    ```
-    - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-      // 设置是否是上拉或下拉列表<br>
-      if (scrollView.contentOffset.y != 0) {
-          self.pullTableView = YES;
-      }
-    }
-    ```
-  - Add a judgement in this method.
-    ```
-    /**
-     * 滚动列表切换页面时
-     */
-    - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-        // 如果是上拉或下拉列表，直接返回
-        if (self.isPullTableView) {
-            self.pullTableView = NO;
-            return;
-        }
-        [super scrollViewDidEndDecelerating:scrollView];
-        // 加载某一类的数据
-        [self loadDataWithTypeID:self.currentPage];
-    }
-    ```
 #### Plese refer to demo for details.
