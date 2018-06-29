@@ -142,13 +142,13 @@
     // 改变按钮样式
     self.selectedButton.selected = NO;
     self.selectedButton.backgroundColor = self.normalBgColor;
-    UIView *selectedLine = self.lineDict[[NSString stringWithFormat:@"%ld", self.selectedButton.tag]];
+    UIView *selectedLine = self.lineDict[[NSString stringWithFormat:@"%ld", (long)self.selectedButton.tag]];
     selectedLine.hidden = YES;
     self.selectedButton.titleLabel.font = self.normalFont;
     
     button.selected = YES;
     button.backgroundColor = self.currentBgColor;
-    UIView *currentLine = self.lineDict[[NSString stringWithFormat:@"%ld", button.tag]];
+    UIView *currentLine = self.lineDict[[NSString stringWithFormat:@"%ld", (long)button.tag]];
     currentLine.hidden = NO;
     button.titleLabel.font = self.currentFont;
     

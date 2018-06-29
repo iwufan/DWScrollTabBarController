@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author 	= {'jiadawei' => 'jiadawei80@126.com'}
   s.ios.deployment_target = '8.0'
   s.source	= {:git => 'https://github.com/iwufan/DWScrollTabBarController.git', :tag => s.version}
-  s.source_files = 'DWScrollTabBarController/*.{h,m}'
+  s.source_files = 'DWScrollTabBarControllerDemo/DWScrollTabBarControllerDemo/DWScrollTabBarController/*.{h,m}'
   s.requires_arc = true
   s.frameworks	= 'UIKit'
 end
