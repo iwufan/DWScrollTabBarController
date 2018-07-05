@@ -20,7 +20,7 @@
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     
-    self.navigationItem.title = @"Scrollable TabBarController";
+    self.navigationItem.title = @"可滚动选项卡控制器";
     
     // set properties for tab bar
     [self setupTabbarProperties];
@@ -42,14 +42,14 @@
 
 - (void)setupTabbarProperties {
     // color
-    self.normalColor    = [UIColor blackColor];
-    self.currentColor   = [UIColor whiteColor];
-    self.normalBgColor  = [UIColor blueColor];
-    self.currentBgColor = [UIColor orangeColor];
+    self.normalTitleColor    = [UIColor blackColor];
+    self.currentTitleColor   = [UIColor whiteColor];
+    self.normalButtonBgColor  = [UIColor blueColor];
+    self.currentButtonBgColor = [UIColor orangeColor];
     self.tabBarBgColor  = [UIColor whiteColor];
     // font
-    self.normalFont     = [UIFont systemFontOfSize:13];
-    self.currentFont    = [UIFont systemFontOfSize:18];
+    self.normalTitleFont     = [UIFont systemFontOfSize:13];
+    self.currentTitleFont    = [UIFont systemFontOfSize:18];
     // height
     self.tabBarHeight   = 30;
     // button width
