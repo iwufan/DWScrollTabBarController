@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DWTableView : UIView
-/**类别ID*/
+/**type ID*/
 @property (nonatomic, copy) NSString *typeID;
 
 @end

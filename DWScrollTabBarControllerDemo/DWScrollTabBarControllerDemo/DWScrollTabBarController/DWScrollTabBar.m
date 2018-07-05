@@ -12,11 +12,11 @@
 
 @interface DWScrollTabBar ()
 
-/**当前选中的按钮*/
+/**The current selected button*/
 @property (nonatomic, strong) UIButton              *selectedButton;
-/**存放每个按钮对应的指示条*/
+/**Store the indicator line of each tabbar button*/
 @property (nonatomic, strong) NSMutableDictionary   *lineDict;
-/**所有按钮*/
+/**All tabbar buttons*/
 @property (nonatomic, strong) NSMutableArray        *buttonArray;
 
 @end
@@ -63,24 +63,23 @@
         
         tabButton.titleLabel.font = self.normalFont;
         
-        tabButton.tag = i;      // 用于区分点击的是哪个
+        tabButton.tag = i;
         
         [tabButton addTarget:self action:@selector(clickTabButtonOnTabBar:) forControlEvents:UIControlEventTouchUpInside];
-        // 使用选中字体计算按钮大小
+        // Calculate the button's size with selected font
         NSDictionary *textAttrs = @{NSFontAttributeName : self.currentFont};
         
-        // 按钮宽度
         CGFloat buttonWidth = 0;
         
         if (!self.isUnifiedWidth) {
-            // 如果不使用统一宽度，则使用按钮标题宽度
+            // If all button's width are not the same, then use the button's title's width as the button's width
             buttonWidth = [tabItemArray[i] boundingRectWithSize:CGSizeMake(kScreenWidth - 2 * self.leftMargin, self.tabBarHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttrs context:nil].size.width;
         } else {
-            // 如果未设置按钮宽度，默认100
+            // If all button's width are the same. Default is 100.
             buttonWidth = self.buttonWidth;
         }
         
-        buttonWidths += buttonWidth;    // 所有按钮的宽度
+        buttonWidths += buttonWidth;    // The sum of all buttons' width
         
         leftOffset = self.leftMargin + buttonWidths + self.buttonMargin * i - buttonWidth;
         
@@ -90,9 +89,8 @@
         
         [self.buttonArray addObject:tabButton];
         
-        // 显示时，添加线
         if (self.isShowIndicatorLine) {
-            // 添加指示线
+       
             CGFloat lineWidth = self.indicatorLineWidth <= 0 ? buttonWidth : self.indicatorLineWidth;
             UIView *line = [[UIView alloc] init];
             line.backgroundColor = self.indicatorLineColor;
@@ -107,15 +105,15 @@
             [self.lineDict setObject:line forKey:[NSString stringWithFormat:@"%d", i]];
         }
         
-        // 计算左侧距离
+        // calculate the sum of left offset
         leftOffset += buttonWidth;
         
-        // 默认选中第1个按钮
+        // select the first tabbar button by default
         if (i == 0) {
             [self clickTabButtonOnTabBar:tabButton];
         }
     }
-    // 设置scrollView的内容大小
+    // set the contentSize of the scrollView
     CGFloat rightMargin = self.rightMargin > 0 ? self.rightMargin : self.leftMargin;
     self.scrollView.contentSize = CGSizeMake(leftOffset + rightMargin, 0);
 }
@@ -128,9 +126,9 @@
 }
 
 - (void)clickTabButtonOnTabBar:(UIButton *)button{
-    // 点击按钮时，先把这个值设置为NO，因为不是通过滚动列表来自动点击tab按钮
+    // When click the tabbar button directly, set 'fromScrollTable' to 'NO'.
     self.fromScrollTable = NO;
-    // 调用点击按钮的方法
+
     [self clickTabButton:button];
 }
 
@@ -139,7 +137,7 @@
     if (self.selectedButton == button) {
         return;
     }
-    // 改变按钮样式
+    // Change the button's style
     self.selectedButton.selected = NO;
     self.selectedButton.backgroundColor = self.normalBgColor;
     UIView *selectedLine = self.lineDict[[NSString stringWithFormat:@"%ld", (long)self.selectedButton.tag]];
@@ -153,7 +151,7 @@
     button.titleLabel.font = self.currentFont;
     
     self.selectedButton = button;
-    // 滚动tabBar
+    // Scroll the tab bar
     [self scrollTabBarWithButton:button];
     
     if ([self.delegate respondsToSelector:@selector(tabBar:didClickTabButton:)]) {
@@ -161,7 +159,7 @@
     }
 }
 /**
- * 滚动tabBar
+ * Scroll the tab bar.
  */
 - (void)scrollTabBarWithButton:(UIButton *)button{
     

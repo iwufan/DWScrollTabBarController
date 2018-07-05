@@ -22,63 +22,63 @@
  */
 @interface DWScrollTabBar : UIView
 
-/**存放tabBar按钮*/
-@property (nonatomic, strong) UIScrollView *scrollView;
-
+/**The container of tabBar buttons*/
+@property (nonatomic, strong) UIScrollView                          *scrollView;
+/**The array of all tab items */
 @property (nonatomic, strong) NSArray                               *tabItemArray;
-/**正常字体*/
+/**The font of buttons in normal status (default: "normal, 14")*/
 @property (nonatomic, assign) UIFont                                *normalFont;
-/**选中字体*/
+/**The font of buttons in selected status (default: the same with 'normalFont')*/
 @property (nonatomic, assign) UIFont                                *currentFont;
-/**正常标题颜色*/
+/**The title color of buttons in normal status (default: 'blackColor')*/
 @property (nonatomic, strong) UIColor                               *normalColor;
-/**当前标题颜色*/
+/**The title color of buttons in selected status (default: 'orangeColor')*/
 @property (nonatomic, strong) UIColor                               *currentColor;
-/**正常背景颜色*/
+/**The background color of buttons in normal status (default: 'whiteColor')*/
 @property (nonatomic, strong) UIColor                               *normalBgColor;
-/**当前背景颜色*/
+/**The background color of buttons in selected status (default: 'whiteColor')*/
 @property (nonatomic, strong) UIColor                               *currentBgColor;
-/**按钮间距*/
+/**The margin between buttons (default: 0)*/
 @property (nonatomic, assign) CGFloat                               buttonMargin;
-/**左侧间距*/
+/**The margin between the tab bar's left side and the first button's left side (default: 0)*/
 @property (nonatomic, assign) CGFloat                               leftMargin;
-/**右侧间距*/
+/**The margin between the tab bar's right side and the last button's right side (default: the same with 'leftMargin')*/
 @property (nonatomic, assign) CGFloat                               rightMargin;
-/**tabBar高度(默认40)*/
+/**The height of tab bar (default: 40, the same with buttons' height)*/
 @property (nonatomic, assign) CGFloat                               tabBarHeight;
-/**按钮宽度(默认100)*/
+/**The width of buttons. (default: 100. if 'unifiedWidth' is 'NO', no need to set this property)*/
 @property (nonatomic, assign) CGFloat                               buttonWidth;
-/**指示条颜色*/
+/**The color of indicator line (default: the same with 'currentColor')*/
 @property (nonatomic, strong) UIColor                               *indicatorLineColor;
-/**指示线高度(默认1)*/
+/**The height of indicator line (default: 1)*/
 @property (nonatomic, assign) CGFloat                               indicatorLineHeight;
-/**指示线宽度(默认按钮宽度)*/
+/**The width of indicator line (default: the same with button's width)*/
 @property (nonatomic, assign) CGFloat                               indicatorLineWidth;
-/**指示线居中(默认可不设置)*/
+/**The indicator line is in the center or not (default: NO)*/
 @property (nonatomic, assign, getter=isIndicatorLineCenter) BOOL    indicatorLineCenter;
-/**是否显示指示线(默认不显示)*/
+/**Show indicator line or not (default: 'NO')*/
 @property (nonatomic, assign, getter=isShowIndicatorLine) BOOL      showIndicatorLine;
-/*底部分割线颜色*/
+/**The color of bottom line of tab bar (default: 'lightGrayColor')*/
 @property (nonatomic, strong) UIColor                               *bottomLineColor;
-/**底部分割线高度(默认1)*/
+/**The height of bottom line of tab bar (default: 1)*/
 @property (nonatomic, assign) CGFloat                               bottomLineHeight;
-/**是否显示底部分割线(默认不显示)*/
+/**Show bottom line of tab bar or not (default: 'NO')*/
 @property (nonatomic, assign, getter=isShowBottomLine) BOOL         showBottomLine;
-/**是否使用统一宽度*/
+/**Each button has the same width or not (default: 'NO'. If it's 'YES', the 'buttonWidth' must be set, default is 100)*/
 @property (nonatomic, assign, getter=isUnifiedWidth) CGFloat        unifiedWidth;
-/**是否有弹簧效果*/
+/**Has bounces effect or not (default: 'NO')*/
 @property (nonatomic, assign, getter=isBounces) CGFloat             bounces;
-/**滚动列表来选中tabBar上的按钮*/
+/**Scroll table view to select tabbar button*/
 @property (nonatomic, assign, getter=isFromScrollTable) BOOL        fromScrollTable;
 
 @property (nonatomic, weak) id<DWScrollTabBarDelegate>              delegate;
 
 /**
- * 点击tabBarButton
+ * Click a button in the tab bar.
  */
 - (void)clickTabButton:(UIButton *)button;
 /**
- * 根据索引点击tabBarButton上的按钮
+ * Click a button in the tab bar according to a 'index'
  */
 - (void)clickButtonAtIndex:(NSInteger)index;
 

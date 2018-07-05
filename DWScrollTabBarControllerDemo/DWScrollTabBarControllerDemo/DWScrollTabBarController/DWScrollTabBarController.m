@@ -14,7 +14,7 @@
 
 @interface DWScrollTabBarController ()
 
-/**上一次打开的列表*/
+/**The index of last page that opened.*/
 @property (nonatomic, assign) NSInteger previousPage;
 
 @end
@@ -24,9 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // ！！！！ 这句话不加看不到tabBar上的内容
+    // ！！！！ You won't see the content in the tab bar if you don't add the code below.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    // 默认可以滚动
+    // The tab bar is scrollable by default.
     self.scrollable = YES;
 }
 
@@ -34,28 +34,28 @@
     
     _typesArray = typesArray;
     
-    // 添加tabbar
+    // add tab bar
     [self addScrollTabBar];
-    // 设置各种颜色
+    // set all colors
     [self setupColors];
-    // 设置按钮宽度
+    // set width of buttons
     [self setupButtonWidth];
-    // 设置间距
+    // set margins
     [self setupMargins];
-    // 设置默认值
+    // set all default values
     [self setupDefaults];
-    // 设置指示条
+    // set all lines
     [self setupLine];
-    // 设置字体
+    // set all fonts
     [self setupFonts];
-    // 设置内容
+    // set contents of tab bar
     self.scrollTabBar.tabItemArray = typesArray;
 }
 
-#pragma mark - 添加子控件
+#pragma mark - add sub views
 - (void)addScrollTabBar {
     
-    // 可滚动tabBar
+    // a scrollable tab bar
     CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
     
     DWScrollTabBar *scrollTabBar = [[DWScrollTabBar alloc] initWithFrame:CGRectMake(0, 64, DW_SCREEN_WIDTH, tabBarHeight)];
@@ -66,7 +66,7 @@
     self.scrollTabBar = scrollTabBar;
 }
 /**
- * 将需要展示的列表都加入到scrollView中
+ * Add all sub tableviews into the scrollview
  */
 - (void)setTableViewArray:(NSMutableArray *)tableViewArray{
     
@@ -80,7 +80,7 @@
     CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
     
     for (int i = 0; i < self.typesArray.count; i++) {
-        // 列表
+        // each sub tableView
         UIView *view = self.tableViewArray[i];
         
         CGFloat leftOffset = i * DW_SCREEN_WIDTH;
@@ -95,13 +95,13 @@
 
 - (void)setupColors {
     
-    self.scrollTabBar.normalColor        = self.normalColor         == nil ? [UIColor blackColor]   : self.normalColor;
-    self.scrollTabBar.currentColor       = self.currentColor        == nil ? [UIColor orangeColor]  : self.currentColor ;
-    self.scrollTabBar.normalBgColor      = self.normalBgColor       == nil ? [UIColor whiteColor]   : self.normalBgColor;
-    self.scrollTabBar.currentBgColor     = self.currentBgColor      == nil ? [UIColor whiteColor]   : self.currentBgColor;
-    self.scrollTabBar.backgroundColor    = self.tabBarBgColor       == nil ? [UIColor whiteColor]   : self.tabBarBgColor;
-    self.scrollTabBar.indicatorLineColor = self.indicatorLineColor  == nil ? self.scrollTabBar.currentColor : self.indicatorLineColor;
-    self.scrollTabBar.bottomLineColor    = self.bottomLineColor     == nil ? [UIColor lightGrayColor] : self.bottomLineColor;
+    self.scrollTabBar.normalColor        = self.normalTitleColor        == nil ? [UIColor blackColor]   : self.normalTitleColor;
+    self.scrollTabBar.currentColor       = self.currentTitleColor       == nil ? [UIColor orangeColor]  : self.currentTitleColor ;
+    self.scrollTabBar.normalBgColor      = self.normalButtonBgColor     == nil ? [UIColor whiteColor]   : self.normalButtonBgColor;
+    self.scrollTabBar.currentBgColor     = self.currentButtonBgColor    == nil ? [UIColor whiteColor]   : self.currentButtonBgColor;
+    self.scrollTabBar.backgroundColor    = self.tabBarBgColor           == nil ? [UIColor whiteColor]   : self.tabBarBgColor;
+    self.scrollTabBar.indicatorLineColor = self.indicatorLineColor      == nil ? self.scrollTabBar.currentColor : self.indicatorLineColor;
+    self.scrollTabBar.bottomLineColor    = self.bottomLineColor         == nil ? [UIColor lightGrayColor] : self.bottomLineColor;
 }
 
 - (void)setupButtonWidth {
@@ -125,33 +125,34 @@
 }
 
 - (void)setupLine {
-    // 指示条
+    // indicator line
     self.scrollTabBar.indicatorLineHeight   = self.indicatorLineHeight <= 0 ? 1 : self.indicatorLineHeight;
     self.scrollTabBar.indicatorLineWidth    = self.indicatorLineWidth;
     self.scrollTabBar.indicatorLineCenter   = self.isIndicatorLineCenter;
     self.scrollTabBar.showIndicatorLine     = self.isShowIndicatorLine;
-    // 分割线
+    // bottom line of tab bar
     self.scrollTabBar.bottomLineHeight      = self.bottomLineHeight <= 0 ? 1 : self.bottomLineHeight;
     self.scrollTabBar.showBottomLine        = self.isShowBottomLine;
 }
 
 - (void)setupFonts {
     
-    self.scrollTabBar.normalFont = self.normalFont == nil ? [UIFont systemFontOfSize:14] : self.normalFont;
-    self.scrollTabBar.currentFont = self.currentFont == nil ? self.scrollTabBar.normalFont : self.currentFont;
+    self.scrollTabBar.normalFont    = self.normalTitleFont  == nil ? [UIFont systemFontOfSize:14] : self.normalTitleFont;
+    self.scrollTabBar.currentFont   = self.currentTitleFont == nil ? self.scrollTabBar.normalFont : self.currentTitleFont;
 }
 
 #pragma mark - DWScrollTabBarDelegate
 - (BOOL)tabBar:(DWScrollTabBar *)tabBar didClickTabButton:(UIButton *)tabBarButton{
     
-    // 如果是滚动列表引起的选中，则直接返回，不需要再去重复滚动列表
+    // If this method is invoked when you scroll the main scrollView, just return 'YES'.
+    // Otherwise, the main scrollView will be scrolled again.
     if (tabBar.isFromScrollTable) {
         
         return YES;
     }
-    // 根据选中的tabBar按钮，滚动到相应的列表
+    // Scroll to a sub tableView according to the button selected in the tab bar.
     [self.scrollView setContentOffset:CGPointMake(tabBarButton.tag * DW_SCREEN_WIDTH, 0) animated:YES];
-    // 设置当前页数
+    // Set index of the current page.
     self.currentPage = tabBarButton.tag;
     
     return NO;
@@ -159,26 +160,26 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    // 当前页数
+    // The index of current page
     self.currentPage = scrollView.contentOffset.x / DW_SCREEN_WIDTH;
-    // 如果是同一页，则直接返回
+    // If 'currentPage' is equal to 'previousPage', just return.
     if (self.previousPage == self.currentPage) {
         return;
     }
     
-    // 选择相应的tab
-    // 当前tab按钮
+    // Select the tab button accordingly.
+    // Get current tab button.
     UIButton *currentTabButton = self.scrollTabBar.scrollView.subviews[self.currentPage];
-    // 滚动列表引起的选中
+    // Set 'fromScrollTable' to 'YES'.
     self.scrollTabBar.fromScrollTable = YES;
-    // 选中当前tab按钮
+    // Select current tab button.
     [self.scrollTabBar clickTabButton:currentTabButton];
     
-    // 存储页数
+    // Store 'currentPage' to 'previousPage'
     self.previousPage = self.currentPage;
 }
 
-#pragma mark - 私有方法
+#pragma mark - private methods
 - (void)clickButtonAtIndex:(NSInteger)index {
     
     [self.scrollTabBar clickButtonAtIndex:index];
