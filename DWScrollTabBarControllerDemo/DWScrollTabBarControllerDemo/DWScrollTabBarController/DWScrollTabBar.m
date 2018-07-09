@@ -57,17 +57,17 @@
         UIButton *tabButton = [[UIButton alloc] init];
         
         [tabButton setTitle:tabItemArray[i] forState:UIControlStateNormal];
-        [tabButton setTitleColor:self.normalColor forState:UIControlStateNormal];
-        [tabButton setTitleColor:self.currentColor forState:UIControlStateSelected];
-        tabButton.backgroundColor = self.normalBgColor;
+        [tabButton setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
+        [tabButton setTitleColor:self.currentTitleColor forState:UIControlStateSelected];
+        tabButton.backgroundColor = self.normalButtonBgColor;
         
-        tabButton.titleLabel.font = self.normalFont;
+        tabButton.titleLabel.font = self.normalTitleFont;
         
         tabButton.tag = i;
         
         [tabButton addTarget:self action:@selector(clickTabButtonOnTabBar:) forControlEvents:UIControlEventTouchUpInside];
         // Calculate the button's size with selected font
-        NSDictionary *textAttrs = @{NSFontAttributeName : self.currentFont};
+        NSDictionary *textAttrs = @{NSFontAttributeName : self.currentTitleFont};
         
         CGFloat buttonWidth = 0;
         
@@ -139,16 +139,16 @@
     }
     // Change the button's style
     self.selectedButton.selected = NO;
-    self.selectedButton.backgroundColor = self.normalBgColor;
+    self.selectedButton.backgroundColor = self.normalButtonBgColor;
     UIView *selectedLine = self.lineDict[[NSString stringWithFormat:@"%ld", (long)self.selectedButton.tag]];
     selectedLine.hidden = YES;
-    self.selectedButton.titleLabel.font = self.normalFont;
+    self.selectedButton.titleLabel.font = self.normalTitleFont;
     
     button.selected = YES;
-    button.backgroundColor = self.currentBgColor;
+    button.backgroundColor = self.currentButtonBgColor;
     UIView *currentLine = self.lineDict[[NSString stringWithFormat:@"%ld", (long)button.tag]];
     currentLine.hidden = NO;
-    button.titleLabel.font = self.currentFont;
+    button.titleLabel.font = self.currentTitleFont;
     
     self.selectedButton = button;
     // Scroll the tab bar

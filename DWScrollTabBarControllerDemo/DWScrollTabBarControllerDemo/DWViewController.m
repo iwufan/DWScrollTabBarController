@@ -42,38 +42,38 @@
 
 - (void)setupTabbarProperties {
     // color
-    self.normalTitleColor    = [UIColor blackColor];
-    self.currentTitleColor   = [UIColor whiteColor];
-    self.normalButtonBgColor  = [UIColor blueColor];
-    self.currentButtonBgColor = [UIColor orangeColor];
-    self.tabBarBgColor  = [UIColor whiteColor];
+    self.normalTitleColor       = [UIColor blackColor];
+    self.currentTitleColor      = [UIColor whiteColor];
+    self.normalButtonBgColor    = [UIColor blueColor];
+    self.currentButtonBgColor   = [UIColor orangeColor];
+    self.tabBarBgColor          = [UIColor whiteColor];
     // font
-    self.normalTitleFont     = [UIFont systemFontOfSize:13];
-    self.currentTitleFont    = [UIFont systemFontOfSize:18];
+    self.normalTitleFont        = [UIFont systemFontOfSize:13];
+    self.currentTitleFont       = [UIFont systemFontOfSize:18];
     // height
-    self.tabBarHeight   = 30;
+    self.tabBarHeight           = 30;
     // button width
-    self.unifiedWidth   = YES;
-    self.buttonWidth    = 70;
+    self.unifiedWidth           = YES;
+    self.buttonWidth            = 70;
     // indicator line
-    self.showIndicatorLine   = YES;
-    self.indicatorLineHeight = 2;
-    self.indicatorLineColor  = [UIColor redColor];
-    self.indicatorLineWidth  = 50;
-    self.indicatorLineCenter = YES;
+    self.showIndicatorLine      = YES;
+    self.indicatorLineHeight    = 2;
+    self.indicatorLineColor     = [UIColor redColor];
+    self.indicatorLineWidth     = 50;
+    self.indicatorLineCenter    = YES;
     // bottom line
-    self.showBottomLine       = YES;
-    self.bottomLineHeight     = 1;
-    self.bottomLineColor      = [UIColor blackColor];
+    self.showBottomLine         = YES;
+    self.bottomLineHeight       = 1;
+    self.bottomLineColor        = [UIColor blackColor];
     // margin
-    self.showViewMargin = YES;
-    self.viewMargin     = 10;
-    self.leftMargin     = 10;
-    self.rightMargin    = 0;
-    self.buttonMargin   = 10;
+    self.showViewMargin         = YES;
+    self.viewMargin             = 10;
+    self.leftMargin             = 10;
+    self.rightMargin            = 0;
+    self.buttonMargin           = 10;
     // others
-    self.bounces        = YES;
-    self.scrollable     = YES;
+    self.bounces                = YES;
+    self.scrollable             = YES;
 }
 
 /**

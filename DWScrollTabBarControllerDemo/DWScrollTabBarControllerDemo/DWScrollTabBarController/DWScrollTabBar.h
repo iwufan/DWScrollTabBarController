@@ -27,17 +27,17 @@
 /**The array of all tab items */
 @property (nonatomic, strong) NSArray                               *tabItemArray;
 /**The font of buttons in normal status (default: "normal, 14")*/
-@property (nonatomic, assign) UIFont                                *normalFont;
+@property (nonatomic, assign) UIFont                                *normalTitleFont;
 /**The font of buttons in selected status (default: the same with 'normalFont')*/
-@property (nonatomic, assign) UIFont                                *currentFont;
+@property (nonatomic, assign) UIFont                                *currentTitleFont;
 /**The title color of buttons in normal status (default: 'blackColor')*/
-@property (nonatomic, strong) UIColor                               *normalColor;
+@property (nonatomic, strong) UIColor                               *normalTitleColor;
 /**The title color of buttons in selected status (default: 'orangeColor')*/
-@property (nonatomic, strong) UIColor                               *currentColor;
+@property (nonatomic, strong) UIColor                               *currentTitleColor;
 /**The background color of buttons in normal status (default: 'whiteColor')*/
-@property (nonatomic, strong) UIColor                               *normalBgColor;
+@property (nonatomic, strong) UIColor                               *normalButtonBgColor;
 /**The background color of buttons in selected status (default: 'whiteColor')*/
-@property (nonatomic, strong) UIColor                               *currentBgColor;
+@property (nonatomic, strong) UIColor                               *currentButtonBgColor;
 /**The margin between buttons (default: 0)*/
 @property (nonatomic, assign) CGFloat                               buttonMargin;
 /**The margin between the tab bar's left side and the first button's left side (default: 0)*/

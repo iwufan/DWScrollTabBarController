@@ -9,11 +9,13 @@
 #import "DWScrollTabBarController.h"
 #import "DWScrollTabBar.h"
 
-#define DW_SCREEN_WIDTH self.view.frame.size.width
-#define DW_SCREEN_HEIGHT self.view.frame.size.height
+#define kScreenWidth    self.view.frame.size.width
+#define kScreenHeight   self.view.frame.size.height
+#define KIsIPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 @interface DWScrollTabBarController ()
 
+@property (nonatomic, assign) NSInteger navHeight;
 /**The index of last page that opened.*/
 @property (nonatomic, assign) NSInteger previousPage;
 
@@ -28,6 +30,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     // The tab bar is scrollable by default.
     self.scrollable = YES;
+
+    [self setNavHeight];
 }
 
 - (void)setTypesArray:(NSArray *)typesArray {
@@ -52,13 +56,22 @@
     self.scrollTabBar.tabItemArray = typesArray;
 }
 
+- (void)setNavHeight {
+    
+    self.navHeight = 64;
+    
+    if (KIsIPhoneX) {
+        self.navHeight += 24;
+    }
+}
+
 #pragma mark - add sub views
 - (void)addScrollTabBar {
     
     // a scrollable tab bar
     CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
     
-    DWScrollTabBar *scrollTabBar = [[DWScrollTabBar alloc] initWithFrame:CGRectMake(0, 64, DW_SCREEN_WIDTH, tabBarHeight)];
+    DWScrollTabBar *scrollTabBar = [[DWScrollTabBar alloc] initWithFrame:CGRectMake(0, self.navHeight, kScreenWidth, tabBarHeight)];
     scrollTabBar.delegate = self;
     
     [self.view addSubview:scrollTabBar];
@@ -77,31 +90,30 @@
 
 - (void)addTableViews {
     
-    CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
+//    CGFloat tabBarHeight = self.tabBarHeight <= 0 ? 40 : self.tabBarHeight;
     
     for (int i = 0; i < self.typesArray.count; i++) {
         // each sub tableView
         UIView *view = self.tableViewArray[i];
         
-        CGFloat leftOffset = i * DW_SCREEN_WIDTH;
-        
-        view.frame = CGRectMake(leftOffset, 0, DW_SCREEN_WIDTH, DW_SCREEN_HEIGHT - 64  - tabBarHeight);
+        CGFloat leftOffset = i * kScreenWidth;
+        view.frame = CGRectMake(leftOffset, 0, kScreenWidth, self.scrollView.frame.size.height);
         
         [self.scrollView addSubview:view];
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.tableViewArray.count * DW_SCREEN_WIDTH, 0);
+    self.scrollView.contentSize = CGSizeMake(self.tableViewArray.count * kScreenWidth, 0);
 }
 
 - (void)setupColors {
     
-    self.scrollTabBar.normalColor        = self.normalTitleColor        == nil ? [UIColor blackColor]   : self.normalTitleColor;
-    self.scrollTabBar.currentColor       = self.currentTitleColor       == nil ? [UIColor orangeColor]  : self.currentTitleColor ;
-    self.scrollTabBar.normalBgColor      = self.normalButtonBgColor     == nil ? [UIColor whiteColor]   : self.normalButtonBgColor;
-    self.scrollTabBar.currentBgColor     = self.currentButtonBgColor    == nil ? [UIColor whiteColor]   : self.currentButtonBgColor;
-    self.scrollTabBar.backgroundColor    = self.tabBarBgColor           == nil ? [UIColor whiteColor]   : self.tabBarBgColor;
-    self.scrollTabBar.indicatorLineColor = self.indicatorLineColor      == nil ? self.scrollTabBar.currentColor : self.indicatorLineColor;
-    self.scrollTabBar.bottomLineColor    = self.bottomLineColor         == nil ? [UIColor lightGrayColor] : self.bottomLineColor;
+    self.scrollTabBar.normalTitleColor          = self.normalTitleColor        == nil ? [UIColor blackColor]   : self.normalTitleColor;
+    self.scrollTabBar.currentTitleColor         = self.currentTitleColor       == nil ? [UIColor orangeColor]  : self.currentTitleColor ;
+    self.scrollTabBar.normalButtonBgColor       = self.normalButtonBgColor     == nil ? [UIColor whiteColor]   : self.normalButtonBgColor;
+    self.scrollTabBar.currentButtonBgColor      = self.currentButtonBgColor    == nil ? [UIColor whiteColor]   : self.currentButtonBgColor;
+    self.scrollTabBar.backgroundColor           = self.tabBarBgColor           == nil ? [UIColor whiteColor]   : self.tabBarBgColor;
+    self.scrollTabBar.indicatorLineColor        = self.indicatorLineColor      == nil ? self.scrollTabBar.currentTitleColor : self.indicatorLineColor;
+    self.scrollTabBar.bottomLineColor           = self.bottomLineColor         == nil ? [UIColor lightGrayColor] : self.bottomLineColor;
 }
 
 - (void)setupButtonWidth {
@@ -137,8 +149,8 @@
 
 - (void)setupFonts {
     
-    self.scrollTabBar.normalFont    = self.normalTitleFont  == nil ? [UIFont systemFontOfSize:14] : self.normalTitleFont;
-    self.scrollTabBar.currentFont   = self.currentTitleFont == nil ? self.scrollTabBar.normalFont : self.currentTitleFont;
+    self.scrollTabBar.normalTitleFont   = self.normalTitleFont  == nil ? [UIFont systemFontOfSize:14] : self.normalTitleFont;
+    self.scrollTabBar.currentTitleFont  = self.currentTitleFont == nil ? self.scrollTabBar.normalTitleFont : self.currentTitleFont;
 }
 
 #pragma mark - DWScrollTabBarDelegate
@@ -151,7 +163,7 @@
         return YES;
     }
     // Scroll to a sub tableView according to the button selected in the tab bar.
-    [self.scrollView setContentOffset:CGPointMake(tabBarButton.tag * DW_SCREEN_WIDTH, 0) animated:YES];
+    [self.scrollView setContentOffset:CGPointMake(tabBarButton.tag * kScreenWidth, 0) animated:YES];
     // Set index of the current page.
     self.currentPage = tabBarButton.tag;
     
@@ -161,7 +173,7 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     // The index of current page
-    self.currentPage = scrollView.contentOffset.x / DW_SCREEN_WIDTH;
+    self.currentPage = scrollView.contentOffset.x / kScreenWidth;
     // If 'currentPage' is equal to 'previousPage', just return.
     if (self.previousPage == self.currentPage) {
         return;
@@ -197,7 +209,9 @@
             
             viewMargin = self.viewMargin <= 0 ? 10 : self.viewMargin;
         }
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,  64 + tabBarHeight + viewMargin, DW_SCREEN_WIDTH, DW_SCREEN_HEIGHT - tabBarHeight - viewMargin)];
+        CGFloat height = kScreenHeight - tabBarHeight - viewMargin - self.navHeight;
+        
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,  self.navHeight + tabBarHeight + viewMargin, kScreenWidth, height)];
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.bounces = NO;

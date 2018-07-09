@@ -72,7 +72,6 @@
 @property (nonatomic, assign, getter=isBounces) CGFloat             bounces;
 /**Tab bar can be scrolled or not (default: 'YES')*/
 @property (nonatomic, assign, getter=isScrollable) CGFloat          scrollable;
-
 /**
  * Click a button in the tab bar according to a 'index'
  */
