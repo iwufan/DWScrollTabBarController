@@ -9,12 +9,15 @@
 
 - You can use this framework to create view controllers like these below.
 
+- It can be used on iPhoneX now.
+
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example1.gif)
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example2.gif)
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example3.gif)
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example4.gif)
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example5.gif)
 ![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example6.gif)
+![image](https://github.com/iwufan/Resources/blob/master/Images/DWScrollTabBarController/example7.gif)
 
 # Installation
 - ### Cocoapods
