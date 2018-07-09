@@ -5,7 +5,7 @@
 //  Created by jiadawei on 06/04/2017.
 //  Copyright © 2017 david. All rights reserved.
 //
-// version: 1.0.2
+// version: 1.0.3
 
 #import <UIKit/UIKit.h>
 #import "DWScrollTabBar.h"
