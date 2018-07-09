@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name	= 'DWScrollTabBarController'
-  s.version	= '1.0.2'
+  s.version	= '1.0.3'
   s.summary	= 'A scrollable tabBar with dynamic items. Each item shows a specific view.'
   s.homepage	= 'https://github.com/iwufan/DWScrollTabBarController'
   s.license	= 'MIT'
