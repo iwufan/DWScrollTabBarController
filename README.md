@@ -2,7 +2,7 @@
 
 - A scrollable tabBar with dynamic items. Each item shows a specific view.
 
-You can click [Here](https://github.com/iwufan/DJTabBarController) to get the Swift version of this framework.
+- Swift: You can click [Here](https://github.com/iwufan/DJTabBarController) to get the Swift version of this framework.
 
 # Why shoud I use this framework
 - You can build a view controller with scrollable tabBar in only a few steps.<br>
